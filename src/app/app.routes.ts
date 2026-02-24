@@ -97,12 +97,14 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   // Student Layout
   {
-    path: 'layout',
+    path: 'layoutS',
     component: LayoutComponent,
     canActivate: [authGuard, RoleGuard],
     data: { roles: ['ROLE_USER', 'ROLE_MGR', 'ROLE_ADMIN'] },
     children: [
-      //{ path: 'reminders',component: ReminderLayoutComponent},
+
+
+      // { path: 'reminders',component: ReminderLayoutComponent},
       //{ path: 'reminders',component: ReminderSidebarComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'dashboard', component: HomeSectionComponent },
