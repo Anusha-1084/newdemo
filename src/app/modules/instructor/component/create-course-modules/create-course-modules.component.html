@@ -1,0 +1,19 @@
+<div class="container d-flex justify-content-center align-items-center flex-column mt-lg-4 mb-lg-4">
+    <h2 class="fs-2">Create Courses Module</h2>
+    <form class="w-75" [formGroup]="moduleForm" (ngSubmit)="submitForm()">
+        <div class="mb-3">
+            <label for="courseName" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="courseName" placeholder="Enter Course Name"
+                formControlName="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Course Description</label>
+            <textarea type="description" class="form-control" id="description" placeholder="Enter Course Description"
+                formControlName="description" required></textarea>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <button type="button" class="btn btn-secondary btn-lg" (click)="onPrevious()">Back</button>
+            <button type="submit" class="btn btn-lg btn-primary" [disabled]="!moduleForm.valid">Save and Next</button>
+        </div>
+    </form>
+</div>

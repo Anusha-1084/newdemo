@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="nav-container w-100 d-flex justify-content-between">
+    <h4 class="navbar-title d-flex align-items-center cursor-pointer" routerLink="/admin-layout/admin-dashboard">Admin Navbar</h4>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <ul class="navbar-nav mr-auto gap-3" id="navbarNav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Users
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item users-link" (click)="navigateTo('user')">Students</a>
+              
+                </div>
+              </li>
+         
+        </ul>
+            <div class="nav-item" (click)="onCartIconClick()">
+                <div *ngIf="firstNameInitial && lastNameInitial;" class="">
+                    <p class="Name_logo">{{ firstNameInitial }}{{ lastNameInitial }}</p>
+                </div>
+            </div>
+        
+  </div>
+</nav>

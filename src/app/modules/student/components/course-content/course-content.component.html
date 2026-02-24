@@ -1,0 +1,37 @@
+<div class="course-content-container ">
+  <div>
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Video Player Section -->
+      <div class="video-player">
+        <h2>{{ course.name }}</h2>
+        <video controls [src]="videoUrl" class="video-element">Your browser does not support the video tag.</video>
+        <h3>{{ videoTitle }}</h3>
+      </div>
+  
+      <!-- Tabs Section -->
+      <div class="tabs">
+        <button class="tab">Overview</button>
+        <button class="tab">Attachments</button>
+        <button class="tab">Notes</button>
+        <button class="tab">Doubts</button>
+        <button class="tab">Reviews</button>
+      </div>
+  
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <h3>Course content</h3>
+      <ul>
+        <li *ngFor="let content of courseContents">
+          <span (click)="selectVideo(content.contentUrl, content.section)" style="cursor: pointer;">
+            {{ content.section }} ({{ content.completed }}/{{ content.total }} | {{ content.duration }})
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div> 
+</div>
+
+<app-course-content-sidebar [course]="course"></app-course-content-sidebar>
+
+</div>

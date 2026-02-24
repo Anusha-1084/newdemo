@@ -1,0 +1,12 @@
+<div class="home-container d-flex gap-lg-4 flex-column m-3">
+    <div class="container mt-4">
+        <div class="head-text d-flex justify-content-between align-items-center p-5">
+            <h1 class="m-0 fs-3 fw-bold">Welcome to Edutech</h1>
+            <button class="btn bg-primary text-white" (click)="createCourses()">Create New Course</button>
+        </div>
+    </div>
+    <div class="card-container">
+        <app-cards *ngFor="let card of cards" [title]="card.title" [description]="card.description" [image]="card.image"
+            [linkText]="card.linkText" />
+    </div>
+</div>

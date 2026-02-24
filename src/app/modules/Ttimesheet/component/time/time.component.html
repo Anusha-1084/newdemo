@@ -1,0 +1,22 @@
+<div class="time-container">
+  <div class="tab-buttons">
+    <div class="top-tabs">
+      <button 
+        class="tab" 
+        [class.active]="activeTab === 'logtime'" 
+        (click)="navigateTo('logtime')"
+      >
+        Time Log
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="activeTab === 'sheet'" 
+        (click)="navigateTo('sheet')"
+      >
+        Timesheet
+      </button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

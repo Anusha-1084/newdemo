@@ -1,0 +1,50 @@
+<div class="main-dashboard-container">
+    <div class="dashboard-container" [class.open]="isSidebarOpen">
+        <div class="header">
+            <div *ngIf="firstName && lastName;" class="user-name">
+                {{ firstName }} {{ lastName }}
+            </div>
+           
+        </div>
+        <div class="sidebar">
+
+            <ul class="nav-items">
+                
+                <li>
+                    <mat-icon>notifications_active</mat-icon>
+                    <a routerLink="/home" routerLinkActive="active">Notification</a>
+                </li>
+                <li>
+                    <mat-icon> message</mat-icon>
+                    <a routerLink="/home" routerLinkActive="active">Messages</a>
+                </li>
+            </ul>
+
+         
+     
+            <ul class="nav-items">
+                <li>
+                    <mat-icon>settings</mat-icon>
+                    <a routerLink="/admin-layout/account-settings/profile" routerLinkActive="active">Account Settings</a>
+                </li>
+                <li>
+                    <mat-icon>payment</mat-icon>
+                    <a routerLink="/home" routerLinkActive="active">Payment Methods</a>
+                </li>
+            </ul>
+            <ul class="nav-items">
+                <li>
+                    <mat-icon>language</mat-icon>
+                    <a routerLink="/home" routerLinkActive="active">Language</a>
+                </li>
+            </ul>
+            <ul class="nav-items">
+                <li>
+                    <mat-icon>help_outline</mat-icon>
+                    <a routerLink="/home" routerLinkActive="active">Help and Support</a>
+                </li>
+            </ul>
+        </div>
+        <button class="logout-btn" (click)="logout()">Log Out</button>
+    </div>
+</div>

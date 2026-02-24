@@ -1,0 +1,76 @@
+// .container {
+//   margin-left:0px;
+//   margin-right: 0px;
+//   display: flex;
+//   height: 100vh;
+//   flex-direction: column;
+// }
+
+.content-wrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sidebar {
+  width: 50px;
+  background-color: #495057;
+  padding-top: 60px; // Default with top navbar visible
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  transition: padding-top 0.3s ease;
+}
+
+.sidebar.shift-up {
+  padding-top: 0 !important; // When navbar is hidden, remove gap
+}
+
+.main-content {
+  margin-left: px;
+  padding-top: 0%;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+/* Nav Styling */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  padding: 12px 0;
+  text-align: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links i {
+  font-size: 18px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: #495057;
+  color: #fff !important;
+  font-weight: 600;
+  border-left: 4px solid #fff;
+}
+
+.dropdown-arrow {
+  font-size: 18px;
+  color: #ffffff;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+}

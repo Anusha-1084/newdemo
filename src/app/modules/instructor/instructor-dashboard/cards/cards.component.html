@@ -1,0 +1,14 @@
+<div class="container mt-4">
+    <div class="card-containt d-flex row g-0 align-items-center" [ngClass]="{ 'reverse': isReversed }">
+        <div class="col-4 text-center p-3">
+            <img [src]="image" class="img-fluid rounded-circle" alt="Card Image">
+        </div>
+        <div class="col-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{ description }}</p>
+                <a router="#" class="text-primary fw-bold">{{ linkText }}</a>
+            </div>
+        </div>
+    </div>
+</div>

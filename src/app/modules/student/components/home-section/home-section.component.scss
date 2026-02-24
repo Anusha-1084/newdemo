@@ -1,0 +1,66 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    background-color: #f0f0f0;
+    margin: 20px 0; /* Added margin for spacing */
+  }
+  
+  .user-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #777;
+  }
+  
+  .status {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  .timer {
+    font-size: 24px;
+    margin: 15px 0;
+  }
+  
+  .checkin-btn {
+    background-color: #00bfa5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .checkin-btn:hover {
+    background-color: #009688;
+  }
+  
+  
+  

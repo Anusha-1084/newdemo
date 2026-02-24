@@ -1,0 +1,100 @@
+<!-- Top Header -->
+<div class="header-bar" *ngIf="router.url === '/dashboard'">
+  <button class="profile-btn" (click)="toggleSidebar()">
+    {{ firstName?.charAt(0) }}{{ lastName?.charAt(0) }}
+  </button>
+</div>
+
+
+
+<!-- Sidebar -->
+<div class="sidebar-container" [class.open]="isSidebarOpen">
+  <button class="close-sidebar-btn" (click)="closeSidebar()">×</button>
+
+  <!-- Header: Avatar + Name + Actions -->
+  <div class="header-section">
+    <div class="profile-info">
+      <div class="avatar-wrapper">
+        <ng-container *ngIf="previewUrl; else initials">
+          <img [src]="previewUrl" class="profile-avatar" />
+        </ng-container>
+        <ng-template #initials>
+          <div class="avatar-initials">
+            {{ firstName?.charAt(0) }}{{ lastName?.charAt(0) }}
+          </div>
+        </ng-template>
+
+        <!-- Edit icon overlay -->
+        <button class="edit-icon-btn" [routerLink]="['/layout/edit-profile']">
+          ✎
+        </button>
+      </div>
+      <div class="user-name">{{ firstName }} {{ lastName }}</div>
+    </div>
+
+    <div class="header-actions">
+      <button (click)="openSwitchAccount()" class="switch-btn">🔁 Switch</button>
+    </div>
+  </div>
+
+  <!-- User Info -->
+  <ul class="info-list">
+    <li>
+      <mat-icon>email</mat-icon>
+      <span class="label">Email</span>
+      <span class="value">{{ userData?.email }}</span>
+    </li>
+    <li>
+      <mat-icon>phone</mat-icon>
+      <span class="label">Mobile</span>
+      <span class="value">{{ userData?.mobileNo || 'N/A' }}</span>
+    </li>
+    <li>
+      <mat-icon>place</mat-icon>
+      <span class="label">Location</span>
+      <span class="value">{{ userData?.location || 'N/A' }}</span>
+    </li>
+    <li>
+      <mat-icon>person</mat-icon>
+      <span class="label">Bio</span>
+      <span class="value">{{ userData?.bio || 'No bio available' }}</span>
+    </li>
+    <li>
+      <div class="status-control">
+        <span>Status</span>
+        <select [(ngModel)]="userData.status" (change)="onStatusChange()">
+          <option *ngFor="let option of statusOptions" [value]="option">
+            {{ option.replace('_',' ') | titlecase }}
+          </option>
+        </select>
+      </div>
+    </li>
+    <li>
+      <span>Created</span>
+      <b>{{ userData?.createdAt }}</b>
+    </li>
+  </ul>
+
+  <!-- Actions -->
+  <div class="action-buttons">
+    <button (click)="openAddAccount()">➕ Add Account</button>
+  </div>
+
+  <!-- Logout -->
+  <button class="logout-btn" (click)="logout()">🚪 Log Out</button>
+
+  <!-- Popups -->
+  <div *ngIf="showAddAccountBox" class="popup-overlay">
+    <div class="popup-box">
+      <button class="close-btn" (click)="closePopup()">×</button>
+      <app-register></app-register>
+    </div>
+  </div>
+  <div *ngIf="showSwitchAccountBox" class="popup-overlay">
+    <div class="popup-box">
+      <button class="close-btn" (click)="closePopup()">×</button>
+      <app-login [isSwitchAccountMode]="true" (loginSuccess)="closePopup()"></app-login>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,105 @@
+
+<div class="auth-form-container">
+  <h2 class="form-title">Create Account</h2>
+  <p class="form-subtitle">Join us to manage your CRM activities.</p>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="auth-form">
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error *ngIf="registerForm.get('firstName')?.hasError('required') && registerForm.get('firstName')?.touched">
+        First name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" />
+      <mat-error *ngIf="registerForm.get('lastName')?.hasError('required') && registerForm.get('lastName')?.touched">
+        Last name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="registerForm.get('username')?.hasError('required') && registerForm.get('username')?.touched">
+        Username is required.
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('username')?.hasError('minlength') && registerForm.get('username')?.touched">
+        Username must be at least 3 characters.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" />
+      <mat-error *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
+        Please enter a valid email.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Mobile No</mat-label>
+      <input matInput formControlName="mobile_no" type="tel" />
+      <mat-error *ngIf="registerForm.get('mobile_no')?.hasError('required') && registerForm.get('mobile_no')?.touched">
+        Mobile number is required.
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('mobile_no')?.hasError('pattern') && registerForm.get('mobile_no')?.touched">
+        Please enter a 10-digit mobile number.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field password-field">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="togglePasswordVisibility()"
+        aria-label="Toggle password visibility"
+      >
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="passwordLengthError()">
+        Password must be at least 6 characters.
+      </mat-error>
+      <mat-error *ngIf="passwordAlphanumericError()">
+        Password must contain letters and numbers.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field password-field">
+      <mat-label>Confirm Password</mat-label>
+      <input
+        matInput
+        [type]="hideConfirmPassword ? 'password' : 'text'"
+        formControlName="confirmPassword"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="toggleConfirmPasswordVisibility()"
+        aria-label="Toggle confirm password visibility"
+      >
+        <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="mismatchError()">
+        Passwords do not match.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" class="submit-btn register-btn">
+      Sign Up
+    </button>
+  </form>
+</div>

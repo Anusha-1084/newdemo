@@ -1,0 +1,40 @@
+
+<div class="hamburg-container" (click)="toggleNav()">
+    <div class="hamburger" *ngIf="!isNavOpen" >&#x2190;</div>
+    </div>
+
+
+<div class="sidenav" [class.open]="isNavOpen">
+  
+  <div class="close-icon" *ngIf="isNavOpen" (click)="toggleNav()">&#x2192;</div>
+
+
+  <div class="title">Course content</div>
+  <hr />
+
+ 
+  <div class="module-sections" *ngFor="let module of course.modules">
+   
+    <div class="module-section-title-bar" (click)="toggleLessons(module.id)" >
+      <div class="module-section-name" >Section {{module.id}}: {{module.moduleName}}</div>
+      <div class="module-duration">0/{{modules.length}} | 5 min</div>
+      <button class="dropdown-btn">{{ !isLessonsVisible[module.id] ? "▶" : "▼" }}</button>
+    </div>
+
+   
+    <div class="lessons-container" *ngIf="isLessonsVisible[module.id]">
+      <div class="lessons" *ngFor="let lesson of module.lessons">
+        <div class="lessons-topics" >
+          <label>
+            <input type="checkbox" class="lesson-checkbox" /> {{lesson.title }}
+          </label>
+          <div class="lesson-duration">5 mins</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+

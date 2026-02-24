@@ -1,0 +1,161 @@
+<div class="page-wrapper">
+<div class="leave-availability">
+  <h2>Leave Availability</h2>
+
+  <div class="leave-cards">
+
+    <!-- Sick -->
+    <div class="leave-card sick">
+      <div class="circle-container">
+        <svg class="progress-ring" width="70" height="70">
+          <circle class="ring-bg" cx="35" cy="35" r="30"></circle>
+          <circle class="ring-progress"
+        cx="35" cy="35" r="30"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="getOffset(remainingSick, totalSick)">
+</circle>
+
+        </svg>
+         <span class="circle-value">{{ remainingSick }}</span>
+      </div>
+      <p class="remaining-text">Remaining</p>
+      <span class="label">Sick</span>
+    </div>
+
+    <!-- Casual -->
+    <div class="leave-card casual">
+      <div class="circle-container">
+        <svg class="progress-ring" width="70" height="70">
+          <circle class="ring-bg" cx="35" cy="35" r="30"></circle>
+          <circle class="ring-progress"
+        cx="35" cy="35" r="30"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="getOffset(remainingCasual, totalCasual)">
+</circle>
+
+        </svg>
+        <span class="circle-value">{{ remainingCasual }}</span>
+      </div>
+      <p class="remaining-text">Remaining</p>
+      <span class="label">Casual</span>
+    </div>
+
+    <!-- Earned -->
+    <div class="leave-card earned">
+      <div class="circle-container">
+        <svg class="progress-ring" width="70" height="70">
+          <circle class="ring-bg" cx="35" cy="35" r="30"></circle>
+          <circle class="ring-progress"
+        cx="35" cy="35" r="30"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="getOffset(remainingEarned, totalEarned)">
+</circle>
+
+        </svg>
+        <span class="circle-value">{{ remainingEarned }}</span>
+      </div>
+      <p class="remaining-text">Remaining</p>
+      <span class="label">Earned</span>
+    </div>
+
+    <!-- Comp Off -->
+    <div class="leave-card compoff">
+      <div class="circle-container">
+        <svg class="progress-ring" width="70" height="70">
+          <circle class="ring-bg" cx="35" cy="35" r="30"></circle>
+          <circle class="ring-progress"
+        cx="35" cy="35" r="30"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="getOffset(remainingCompOff, totalCompOff)">
+</circle>
+
+        </svg>
+       <span class="circle-value">{{ remainingCompOff }}</span>
+      </div>
+      <p class="remaining-text">Remaining</p>
+      <span class="label">Comp Off</span>
+    </div>
+
+    <!-- Annual -->
+    <div class="leave-card annual">
+      <div class="circle-container">
+        <svg class="progress-ring" width="70" height="70">
+          <circle class="ring-bg" cx="35" cy="35" r="30"></circle>
+          <circle class="ring-progress"
+        cx="35" cy="35" r="30"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="getOffset(remainingLop, 15)">
+</circle>
+
+        </svg>
+       <span class="circle-value">{{ remainingLop }}</span>
+      </div>
+      <p class="remaining-text">Remaining</p>
+      <span class="label">LOP</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="leave-container">
+  <h2>My Leave Requests</h2>
+
+  <div class="filters">
+    <input type="text" placeholder="Search" [(ngModel)]="searchText" class="search-box" />
+
+    <select [(ngModel)]="selectedStatus">
+      <option value="">All Statuses</option>
+      <option value="PENDING">Pending</option>
+      <option value="APPROVED">Approved</option>
+      <option value="REJECTED">Rejected</option>
+    </select>
+
+    <select [(ngModel)]="selectedType">
+      <option value="">All Types</option>
+      <option value="SICK">Sick</option>
+      <option value="CASUAL">Casual</option>
+      <option value="EARNED">Earned</option>
+      <option value="COMP_OFF">Comp Off</option>
+      <option value="ANNUAL">Annual</option>
+    </select>
+  </div>
+
+  <div class="table-scroll">
+  <table class="leave-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Leave Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Total Days</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let leave of filteredLeaves()">
+        <td><a href="#">{{ leave.id }}</a></td>
+        <td>{{ leave.leaveType }}</td>
+        <td>{{ leave.startDate }}</td>
+        <td>{{ leave.endDate }}</td>
+        <td>{{ getTotalDays(leave.startDate, leave.endDate) }}</td>
+        <td>
+          <span [ngClass]="getStatusClass(leave.status)">
+            {{ leave.status }}
+          </span>
+        </td>
+        <td>
+       <ng-container *ngIf="leave.status === 'PENDING'">
+       <button class="edit-btn" (click)="onEdit(leave)">Edit</button>
+       <button class="cancel-btn" (click)="onCancel(leave.id)">Cancel</button>
+      </ng-container>
+      </td>
+
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>

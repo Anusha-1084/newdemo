@@ -1,0 +1,56 @@
+
+
+<div class="ticket-form">
+  <h2>Create Ticket</h2>
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Title Field -->
+    <div>
+      <label for="title">Title:</label>
+      <input id="title" type="text" formControlName="title" />
+      <div class="error" *ngIf="isFieldInvalid('title')">
+        Title is required (min 3 characters).
+      </div>
+    </div>
+
+    <!-- Description Field -->
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div class="error" *ngIf="isFieldInvalid('description')">
+        Description is required (min 5 characters).
+      </div>
+    </div>
+
+    <!-- Priority Dropdown -->
+    <div>
+      <label for="priority">Priority:</label>
+      <select id="priority" formControlName="priority">
+        <option value="">Select Priority</option>
+        <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+      </select>
+      <div class="error" *ngIf="isFieldInvalid('priority')">
+        Priority is required.
+      </div>
+    </div>
+
+    <!-- Auto-filled Created By Field -->
+    <div>
+      <label for="createdBy">Created By:</label>
+      <input id="createdBy" type="text" formControlName="createdBy" readonly />
+    </div>
+
+    <!-- Assigned User ID Field (Manually Entered) -->
+    <div>
+      <label for="assignedUserId">Assigned User ID:</label>
+      <input id="assignedUserId" type="text" formControlName="assignedUserId" />
+      <div class="error" *ngIf="isFieldInvalid('assignedUserId')">
+        Assigned User ID is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="ticketForm.invalid">Submit</button>
+  </form>
+</div>
+

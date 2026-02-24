@@ -1,0 +1,19 @@
+<!-- course-enrollment.component.html -->
+<div class="course-container">
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab" [class.active]="selectedTab === 'all'" (click)="onTabClick('all')">All Courses</button>
+  </div>
+
+  <!-- Course List -->
+  <div class="course-list">
+    <div *ngFor="let course of filteredCourses" class="course-card">
+      <a (click)="goToCourseContent(course)" [routerLink]="['/layout/courses',course.id]" class="course-link">
+        <div class="course-info">
+          <h3 class="course-title">{{ course.name }}</h3>
+          <p class="course-description">{{ course.description }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

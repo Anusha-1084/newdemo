@@ -1,0 +1,16 @@
+<div class="security-container w-75">
+    <h2>Account</h2>
+    <p>Edit your account settings and change your password here</p>
+    <div class="security-form">
+        <label>Email:</label>
+        <input [(ngModel)]="user.email" name="email" required placeholder="Add your email">
+        <label>Current Password:</label>
+        <input [(ngModel)]="user.currentPassword" name="currentPassword" required placeholder="Add your current password">
+        <label>New Password:</label>
+        <input [(ngModel)]="user.password" name="newpassword" required placeholder="Add new your password">
+        <label>Confirm Password:</label>
+        <input [(ngModel)]="user.confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+        <div class="btn">
+            <button (click)="onSave()">Save</button>
+        </div>
+</div>

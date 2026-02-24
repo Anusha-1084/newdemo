@@ -1,0 +1,127 @@
+<div class="dashboard-container">
+
+  <!-- ================= SUMMARY CARDS ================= -->
+  <div class="cards-grid">
+
+    <div class="card">
+      <span class="material-icons icon">calendar_month</span>
+      <h3>Total Leave Requests</h3>
+      <p class="value">{{ totalLeaves }}</p>
+    </div>
+
+    <div class="card">
+      <span class="material-icons icon">pending_actions</span>
+      <h3>Pending</h3>
+      <p class="value">{{ pendingLeaves }}</p>
+    </div>
+
+    <div class="card">
+      <span class="material-icons icon">check_circle</span>
+      <h3>Approved</h3>
+      <p class="value">{{ approvedLeaves }}</p>
+    </div>
+
+    <div class="card">
+      <span class="material-icons icon">cancel</span>
+      <h3>Rejected</h3>
+      <p class="value">{{ rejectedLeaves }}</p>
+    </div>
+
+    <div class="card">
+      <span class="material-icons icon">event_available</span>
+      <h3>Upcoming Leave</h3>
+      <p class="value">{{ upcomingCount }}</p>
+    </div>
+
+    <div class="card">
+      <span class="material-icons icon">history</span>
+      <h3>Recent Leaves</h3>
+      <p class="value">{{ recentLeaves?.length || 0 }}</p>
+    </div>
+
+    <div class="card">
+      <span class="material-icons icon">timelapse</span>
+      <h3>Total Days Taken</h3>
+      <p class="value">{{ totalDaysTaken }}</p>
+    </div>
+
+  </div>
+
+  <!-- ================= LEAVE BALANCES ================= -->
+  <h3 class="section-title">Leave Balances</h3>
+
+  <!-- Loading -->
+  <div *ngIf="leaveBalanceLoading" class="cards-grid">
+    <div class="card skeleton" *ngFor="let x of [1,2,3]"></div>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="leaveBalanceError" class="error-text">
+    Unable to load leave balances. Please try again later.
+  </div>
+
+  <!-- Leave Balance Cards -->
+  <div
+    class="cards-grid"
+    *ngIf="!leaveBalanceLoading && !leaveBalanceError && leaveBalances?.length">
+
+    <div
+      class="card leave-balance-card"
+      *ngFor="let lb of leaveBalances"
+      [ngClass]="getBalanceColor(lb)"
+      (click)="openLeaveBalanceModal(lb)"
+      title="Used {{ lb.used }} out of {{ lb.total }} leaves">
+
+      <h3>{{ lb.leaveType }}</h3>
+
+      <p class="value">{{ lb.remaining }}</p>
+      <span class="sub-text">Remaining</span>
+
+      <div class="progress-bar">
+        <div
+          class="progress-bar-fill"
+          [style.width.%]="getUsagePercent(lb)">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Empty -->
+  <div
+    *ngIf="!leaveBalanceLoading && !leaveBalanceError && !leaveBalances?.length"
+    class="empty-state">
+    No leave balance data available.
+  </div>
+
+</div>
+
+<!-- ================= LEAVE BALANCE MODAL ================= -->
+<div class="modal-backdrop" *ngIf="showLeaveBalanceModal">
+  <div class="modal">
+
+    <h3>{{ selectedLeaveBalance?.leaveType }} Leave</h3>
+
+    <div class="details">
+      <p><strong>Total:</strong> {{ selectedLeaveBalance?.total }}</p>
+      <p><strong>Used:</strong> {{ selectedLeaveBalance?.used }}</p>
+      <p><strong>Remaining:</strong> {{ selectedLeaveBalance?.remaining }}</p>
+    </div>
+
+    <div class="progress-bar">
+      <div
+        class="progress-bar-fill"
+        [style.width.%]="getUsagePercent(selectedLeaveBalance)">
+      </div>
+    </div>
+
+    <button
+      routerLink="/layout/leave-management/my-requests"
+      [queryParams]="{ type: selectedLeaveBalance?.leaveType }">
+      View Leave Requests
+    </button>
+
+    <button (click)="closeLeaveBalanceModal()">Close</button>
+
+  </div>
+</div>

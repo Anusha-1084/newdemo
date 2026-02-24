@@ -1,0 +1,41 @@
+.join-meeting-dialog {
+  padding: 32px;
+  min-width: 450px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.join-meeting-dialog h2 {
+  margin: 0 0 24px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.full-width:last-of-type {
+  margin-bottom: 32px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.dialog-actions button {
+  min-width: 100px;
+  height: 40px;
+  font-weight: 500;
+  text-transform: none;
+  border-radius: 8px;
+}

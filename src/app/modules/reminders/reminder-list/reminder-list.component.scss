@@ -1,0 +1,179 @@
+.reminder-container {
+  display: flex;
+  justify-content: center;  /* Keeps it centered */
+  align-items: flex-start;   /* align to top, can use center if full vertical centering needed */
+  margin-left: 250px;        /* same as sidebar width */
+  min-height: calc(100vh - 60px); /* adjust for navbar height if needed */
+  box-sizing: border-box;
+  width: 120%;
+  padding: 100px
+}
+
+/* Reminder card remains same */
+.reminder-card {
+  position: fixed;
+  top: 80px;               /* adjust this if your navbar height differs */
+  left: 300px;             /* match your sidebar width */
+  right: 40px;             /* some right margin */
+  bottom: 40px;            /* space from bottom */
+  //background: rgb(177, 205, 241);
+
+  background:white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;        /* scroll only inside gray box if content overflows */
+}
+
+.header {
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: #222;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  .filter-field {
+    flex: 1 1 250px;
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-spacing: 0;
+    //background: #e3f2fd;
+
+    th {
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px;
+      background: #f9fafb;
+      color: #444;
+    }
+
+    td {
+      padding: 12px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+    }
+  }
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &.active {
+    background-color: #e6f4ff;
+    color: #007bff;
+  }
+
+  &.expired {
+    background-color: #fdecea;
+    color: #d32f2f;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  font-size: 15px;
+  color: #777;
+  margin-top: 40px;
+}
+
+.header {
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: #222;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  .filter-field {
+    flex: 1 1 250px;
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+   max-height: 500px; /* controls height of scrolling area */
+  overflow-y: auto;
+  border-radius: 6px;
+
+  table {
+   width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  //background: #e3f2fd;
+
+    th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f9fafb;
+  color: #444;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    td {
+      padding: 12px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+      
+    }
+  }
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &.active {
+    background-color: #e6f4ff;
+    color: #007bff;
+  }
+
+  &.expired {
+    background-color: #fdecea;
+    color: #d32f2f;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  font-size: 15px;
+  color: #777;
+  margin-top: 40px;
+}
+

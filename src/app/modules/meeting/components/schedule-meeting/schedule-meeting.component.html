@@ -1,0 +1,89 @@
+<div class="schedule-dialog">
+  <div class="dialog-header">
+    <h2>Schedule a Meeting</h2>
+    <button mat-icon-button class="close-button" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()" class="dialog-body">
+    <!-- Row 1: Title & Description -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Meeting Title</mat-label>
+      <input matInput formControlName="title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="2"></textarea>
+    </mat-form-field>
+
+    <!-- Row 2: Start and End Time -->
+    <div class="time-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Start Time</mat-label>
+        <input
+          matInput
+          type="datetime-local"
+          formControlName="startTime"
+          [min]="minDateTime"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>End Time</mat-label>
+        <input
+          matInput
+          type="datetime-local"
+          formControlName="endTime"
+          [min]="meetingForm.value.startTime"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- Row 3: Max Participants + Password -->
+    <div class="time-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Max Participants</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="maxParticipants"
+          min="1"
+          max="500"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Password (optional)</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="password"
+          placeholder="Set a meeting password"
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- Row 4: Lobby and Recording -->
+    <div class="checkbox-row">
+      <mat-checkbox formControlName="lobbyEnabled">
+        Enable Lobby
+      </mat-checkbox>
+      <mat-checkbox formControlName="recordingEnabled">
+        Enable Recording
+      </mat-checkbox>
+    </div>
+
+    <!-- Row 5: Actions -->
+    <div class="dialog-actions">
+      <button mat-stroked-button type="button" (click)="onClose()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="meetingForm.invalid">
+        Schedule Meeting
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,224 @@
+// /* Trigger line on top */
+// .navbar-trigger-bar {
+//   height: 5px;
+//   width: 100%;
+//   background-color: #ff7f50;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   z-index: 8;
+//   border-radius: 0 0 10px 10px;
+//   transition: background-color 0.3s ease;
+//   cursor: pointer;
+// }
+
+// .navbar-trigger-bar:hover {
+//   background-color: #0f0f0f;
+// }
+
+// .custom-navbar {
+//   position: fixed;
+//   top: -60px;
+//   left: 0;
+//   width: 100%;
+//   z-index: 10;
+//   background-color: #495057;
+//   transition: top 0.3s ease;
+//   padding: 0.5rem 1rem;
+// }
+
+// .custom-navbar.visible {
+//   top: 0;
+// }
+
+// .navbar-nav .nav-link {
+//   color: #fff !important;
+//   font-weight: 600;
+//   margin-right: 15px;
+//   border-radius: 5px;
+// }
+
+// .navbar-nav .nav-link:hover {
+//   background-color: rgba(255, 255, 255, 0.1);
+//   transform: scale(1.05);
+// }
+
+// .navbar-nav .nav-link.active {
+//   background-color: #cc7424;
+//   text-decoration: underline;
+// }
+
+// .search-bar .form-control {
+//   width: 500px;
+//   border-radius: 20px;
+//   box-shadow: 0 0 6px rgba(255, 165, 0, 0.8);
+//   padding: 0.5rem 1rem;
+//   border: none;
+// }
+
+// .Name_logo {
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 8px;
+//   background-color: #0c0ff2;
+//   color: white;
+//   font-size: 16px;
+//   font-weight: 500;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+//   border: 1px solid gray;
+// }
+
+// .status-dot {
+//   width: 10px;
+//   height: 10px;
+//   border-radius: 50%;
+//   position: absolute;
+//   bottom: 2px;
+//   right: 2px;
+//   border: 0.5px solid black;
+// }
+
+// .status-dot.online {
+//   background-color: green;
+// }
+// .status-dot.offline {
+//   background-color: red;
+// }
+// .status-dot.inmeeting {
+//   background-color: yellow;
+// }
+
+// .dropdown-arrow {
+//   margin-left: 5px;
+//   color: white;
+// }
+
+/* Trigger line on top */
+.navbar-trigger-bar {
+  height: 5px;
+  width: 100%;
+  background-color: #ff7f50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  border-radius: 0 0 10px 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-trigger-bar:hover {
+  background-color: #0f0f0f;
+}
+
+.custom-navbar {
+  position: fixed;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #495057;
+  transition: top 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.custom-navbar.visible {
+  top: 0;
+}
+
+.navbar-nav .nav-link {
+  color: #fff !important;
+  font-weight: 600;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.navbar-nav .nav-link.active {
+  background-color: #cc7424;
+  text-decoration: underline;
+}
+
+.search-bar .form-control {
+  width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 0 6px rgba(255, 165, 0, 0.8);
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.Name_logo {
+  width: 40px;
+  height: 40px;
+   border-radius: 50%; 
+  background-color: #0c0ff2;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid gray;
+  cursor: pointer; // Indicate it's clickable
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  border: 0.5px solid black;
+}
+
+.status-dot.online {
+  background-color: green;
+}
+.status-dot.offline {
+  background-color: red;
+}
+.status-dot.inmeeting {
+  background-color: yellow;
+}
+
+.dropdown-arrow {
+  margin-left: 5px;
+  color: white;
+}
+
+// New styles for the logout button
+.user-profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; // Space between initials and logout button
+  margin-left: 15px; // Space from search bar or other elements
+  border-radius: 9999px;
+}
+
+.logout-btn {
+  background-color: #dc3545; // Red color for logout (danger)
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #c82333; // Darker red on hover
+    transform: translateY(-1px); // Subtle lift
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}

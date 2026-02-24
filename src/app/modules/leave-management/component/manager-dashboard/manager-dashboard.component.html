@@ -1,0 +1,101 @@
+<div class="manager-dashboard">
+  <!-- Top -->
+  <div class="top-row">
+    <div class="left">
+      <label class="label">Choose Leave Type to set Company Default</label>
+      <select class="leave-select" (change)="onLeaveTypeSelected($any($event.target).value)">
+        <option value="" selected disabled>-- Select Leave Type --</option>
+        <option *ngFor="let t of leaveTypes; trackBy: trackById" [value]="t.id">{{ t.name }} ({{ t.defaultDays ?? 0 }})</option>
+      </select>
+      <div class="hint">Or click any card below to edit its company default</div>
+    </div>
+    <div class="right-stats">
+      <div class="manager-block">
+        <h3>Manager Dashboard</h3>
+        <p class="small">Set company defaults & approve/reject team leaves</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-grid" role="list">
+    <div class="leave-card" role="listitem" *ngFor="let lt of leaveTypes; trackBy: trackById" (click)="openSetDefaultModal(lt)">
+      <div class="card-top">
+        <div class="circular" [attr.data-percent]="progressPercent(lt)">
+          <svg viewBox="0 0 36 36" class="circular-chart" [attr.style]="'--accent: ' + (lt.color ?? '#3498db')">
+            <path class="circle-bg"
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <path class="circle" [attr.stroke-dasharray]="progressPercent(lt) + ', 100'"
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <text x="18" y="20.35" class="percentage">{{ lt.defaultDays ?? 0 }}</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="leave-name">{{ lt.name }}</div>
+        <div class="leave-meta"><span *ngIf="lt.code">({{ lt.code }})</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manager list -->
+  <div class="manager-section">
+    <h3>Team Leave Requests</h3>
+
+    <div *ngIf="loadingTeamLeaves" class="loading">Loading requests...</div>
+    <div *ngIf="!loadingTeamLeaves && loadingLeavesError" class="error">{{ loadingLeavesError }}</div>
+
+    <table class="requests-table" *ngIf="!loadingTeamLeaves && teamLeaves.length">
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Leave Type</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Days</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of teamLeaves; trackBy: trackById" [class.pending]="r.status.toUpperCase() === 'PENDING'">
+          <td>{{ r.employeeName }}</td>
+          <td>{{ r.leaveType }}</td>
+          <td>{{ r.startDate }}</td>
+          <td>{{ r.endDate }}</td>
+          <td>{{ r.totalDays }}</td>
+          <td><span class="status" [ngClass]="r.status.toLowerCase()">{{ r.status }}</span></td>
+          <td class="actions">
+            <button class="btn" [disabled]="r.status.toUpperCase() !== 'PENDING'" (click)="approveRequest(r)">Approve</button>
+            <button class="btn danger" [disabled]="r.status.toUpperCase() !== 'PENDING'" (click)="rejectRequest(r)">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!loadingTeamLeaves && !teamLeaves.length" class="no-data">No leave requests found.</div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" *ngIf="modalOpen" (click)="closeModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Set Company Default: {{ selectedLeaveType?.name }}</h3>
+        <button class="close" (click)="closeModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <label>Default days (company)</label>
+        <input type="number" [(ngModel)]="modalDays" min="0" step="1" />
+        <div class="note">Enter total allowed days for this leave type across the company.</div>
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn" (click)="saveDefaultDays()" [disabled]="saving">{{ saving ? 'Saving...' : 'Save' }}</button>
+        <button class="btn transparent" (click)="closeModal()" [disabled]="saving">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

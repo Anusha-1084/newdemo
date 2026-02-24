@@ -1,0 +1,26 @@
+<div class="chat-layout">
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <span class="section-label">
+        Direct Messages
+        <span class="arrow" (click)="toggleDirectMessages($event)">
+          {{ showDirectMessages ? "▼" : "▶" }}
+        </span>
+      </span>
+      <span class="icons">⋯ +</span>
+    </div>
+
+    <app-directmessages
+      *ngIf="showDirectMessages"
+      [visible]="showDirectMessages"
+      (userSelected)="onUserSelected($event)"
+    ></app-directmessages>
+  </div>
+
+  <div class="user-details-panel" *ngIf="selectedUser && loggedInUser?.id">
+    <app-user-details
+      [user]="selectedUser"
+      [loggedInUserId]="loggedInUser.id"
+    ></app-user-details>
+  </div>
+</div>

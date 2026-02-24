@@ -1,0 +1,126 @@
+<div class="approve-timesheet">
+  <header class="top-bar">
+    <div class="welcome">
+      <div class="avatar">DW</div>
+      <div>
+        <div class="greeting">Welcome to TimeSheet Manager <strong>{{ managerName }}</strong></div>
+        <div class="today">{{ currentDate | date: 'EEEE, MMMM d, y' }}</div>
+      </div>
+    </div>
+
+    <div class="time-and-stats">
+      <div class="now-time">Time: {{ currentTime }}</div>
+      <div class="stats">
+        <div class="stat">
+          <div class="num">{{ stats.pending }}</div>
+          <div class="label">Pending</div>
+        </div>
+        <div class="stat">
+          <div class="num">{{ stats.approved }}</div>
+          <div class="label">Approved</div>
+        </div>
+        <div class="stat">
+          <div class="num">{{ stats.rejected }}</div>
+          <div class="label">Rejected</div>
+        </div>
+        <div class="stat">
+          <div class="num">{{ stats.totalHours }}</div>
+          <div class="label">Total Hours</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="intro">
+    <h2>Timesheet Management - Manager View</h2>
+    <p class="muted">Review and approve employee timesheet submissions</p>
+  </section>
+
+  <section class="overview-cards">
+    <div class="card">Pending Review <span>{{ stats.pending }}</span></div>
+    <div class="card">Approved <span>{{ stats.approved }}</span></div>
+    <div class="card">Rejected <span>{{ stats.rejected }}</span></div>
+    <div class="card">Total Hours Approved <span>{{ stats.totalHours }}</span></div>
+  </section>
+
+  <section class="filters">
+    <input type="search" placeholder="Search employees, clients, or projects..." [(ngModel)]="filters.search" class="search" />
+    <select [(ngModel)]="filters.employee">
+      <option value="">All Employees</option>
+      <!-- populate if needed -->
+    </select>
+    <select [(ngModel)]="filters.status">
+      <option value="">All Statuses</option>
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+    <button class="btn primary" (click)="applyFilters()">Apply</button>
+    <button class="btn" (click)="clearFilters()">Clear</button>
+  </section>
+
+  <section class="tabs">
+    <button [class.active]="activeTab === 'Pending'" (click)="setTab('Pending')">Pending Review ({{ stats.pending }})</button>
+    <button [class.active]="activeTab === 'All'" (click)="setTab('All')">All Timesheets</button>
+    <button [class.active]="activeTab === 'Approved'" (click)="setTab('Approved')">Approved</button>
+    <button [class.active]="activeTab === 'Rejected'" (click)="setTab('Rejected')">Rejected</button>
+  </section>
+
+  <section class="table-wrap">
+    <table class="timesheet-table">
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Date Range</th>
+          <th>Project</th>
+          <th>Total Hours</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Submitted</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of displayed; trackBy: trackById">
+          <td class="employee">{{ row.employee }}</td>
+          <td class="nowrap">{{ row.dateRange }}</td>
+          <td>
+            <div class="project muted">{{ row.project }}</div>
+          </td>
+          <td>{{ row.hours }}</td>
+          <td>{{ row.type }}</td>
+          <td>
+            <span class="status-pill" [ngClass]="statusClass(row.status)">
+              {{ row.status }}
+            </span>
+          </td>
+          <td>{{ row.submitted | date: 'yyyy-MM-dd' }}</td>
+          <td class="actions-col">
+            <!-- Disable unless we have an id AND the row is Pending -->
+            <button
+              class="btn approve"
+              (click)="approve(row)"
+              [disabled]="!row.id || row.status !== 'Pending'"
+              [attr.title]="!row.id ? 'No timesheet id returned from server' : (row.status !== 'Pending' ? 'Only Pending items can be approved' : null)"
+              [attr.aria-disabled]="(!row.id || row.status !== 'Pending') ? 'true' : null">
+              Approve
+            </button>
+
+            <button
+              class="btn reject"
+              (click)="reject(row)"
+              [disabled]="!row.id || row.status !== 'Pending'"
+              [attr.title]="!row.id ? 'No timesheet id returned from server' : (row.status !== 'Pending' ? 'Only Pending items can be rejected' : null)"
+              [attr.aria-disabled]="(!row.id || row.status !== 'Pending') ? 'true' : null">
+              Reject
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="displayed.length === 0">
+          <td colspan="9" class="no-data">No timesheets matched your filters.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

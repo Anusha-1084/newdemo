@@ -1,0 +1,62 @@
+<div class="landing-container">
+  <!-- Left Panel: 2x2 Grid of Buttons (40%) -->
+  <div class="left-panel">
+    <div class="action-card orange" (click)="onCreateMeeting()">
+      <mat-icon>videocam</mat-icon>
+      <span>New Meeting</span>
+    </div>
+    <div class="action-card blue" (click)="onJoinMeeting()">
+      <mat-icon>meeting_room</mat-icon>
+      <span>Join Meeting</span>
+    </div>
+    <div class="action-card purple" (click)="onScheduleMeeting()">
+      <mat-icon>event</mat-icon>
+      <span>Schedule Meeting</span>
+    </div>
+    <div class="action-card green" (click)="onShareScreen()">
+      <mat-icon>screen_share</mat-icon>
+      <span>Screen Share</span>
+    </div>
+  </div>
+
+  <!-- Right Panel: Upcoming Meetings (60%) -->
+  <div class="right-panel">
+    <div class="panel-header">
+      <h2>Upcoming Meetings</h2>
+      <p class="current-time">{{ currentTime }}</p>
+    </div>
+    
+    <div class="meetings-list">
+      <ng-container *ngIf="upcomingMeetings.length > 0; else noMeetings">
+        <div 
+          *ngFor="let meeting of upcomingMeetings" 
+          class="meeting-card"
+          [ngClass]="{ 'highlighted': shouldHighlight(meeting) }"
+          (click)="joinUpcomingMeeting(meeting)">
+          
+          <div class="meeting-info">
+            <div class="meeting-title">{{ meeting.title }}</div>
+            <div class="meeting-time">
+              {{ meeting.startTime | date:'MMM d, h:mm a' }}
+              <span *ngIf="meeting.endTime"> - {{ meeting.endTime | date:'h:mm a' }}</span>
+            </div>
+            <div class="meeting-status" [ngClass]="getMeetingStatus(meeting).toLowerCase()">
+              {{ getMeetingStatus(meeting) }}
+            </div>
+          </div>
+          
+          <div class="meeting-actions">
+            <mat-icon class="join-icon">arrow_forward</mat-icon>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #noMeetings>
+        <div class="no-meetings">
+          <mat-icon>event_available</mat-icon>
+          <p>No upcoming meetings</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

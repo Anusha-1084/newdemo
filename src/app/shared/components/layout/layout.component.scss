@@ -1,0 +1,90 @@
+
+.layout-container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh; /* Full-screen height */
+}
+
+mat-sidenav {
+  width: 250px; /* Sidebar width */
+  background-color: #f4f4f4;
+}
+
+mat-sidenav-content {
+  // padding: 16px;
+  background-color: #f9f9f9;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  margin-top: 16px;
+}
+
+.app-sidebar {
+  display: flex;
+  position: absolute;
+  right: 0;
+}
+
+.image-container {
+  text-align: center;  /* Center the image */
+  margin-top: 20px;     /* Add space between the navbar and image */
+}
+
+.image-container img {
+  max-width: 100%;      /* Make the image responsive */
+  height: auto;         /* Maintain the aspect ratio */
+  border-radius: 8px;   /* Optional: Add rounded corners */
+}
+
+
+
+/* src/app/layout/layout.component.scss */
+.app-header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  .app-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    span { color: #ffcc00;
+    }
+  }
+  .app-nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    &.active-link {
+      text-decoration: underline;
+    }
+    &:hover {
+      color: #e0e0e0;
+    }
+  }
+}
+
+.app-main-content {
+  flex-grow: 1; /* Allows main content to take available space */
+}
+
+.app-footer {
+  background-color: #333;
+  color: white;
+  padding: 1rem 20px;
+  text-align: center;
+  font-size: 0.8rem;
+}

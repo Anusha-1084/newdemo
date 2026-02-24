@@ -1,0 +1,202 @@
+.leave-container {
+  padding: 2rem;
+  background: #f8faff;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 30px;
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #222;
+  }
+
+  .filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    input,
+    select {
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .search-box {
+      flex: 1;
+    }
+  }
+
+  .leave-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f0f4fa;
+      color: #333;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .edit-btn,
+    .cancel-btn {
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-right: 6px;
+    }
+
+    .edit-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    /* ALL CAPS STATUS CLASSES (backend compatible) */
+.PENDING {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.APPROVED {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.REJECTED {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+}
+}
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+.leave-availability {
+  padding: 3.5rem 2rem 1rem; /* top increased */
+  margin-top: 20px; /* extra space below navbar */
+}
+  /* LEAVE CARDS FIX */
+.leave-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+  .leave-card {
+  flex: 1;
+  max-width: 180px;
+  background: #ffffff;
+  padding: 18px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+  .circle-container {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: auto;
+  }
+
+  .progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .ring-bg {
+    stroke: #e6e6e6;
+    stroke-width: 6;
+    fill: none;
+  }
+
+  .ring-progress {
+    stroke-width: 6;
+    fill: none;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 0.4s ease;
+  }
+
+  .circle-value {
+    position: absolute;
+    top: 21px;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .remaining-text {
+    margin: 8px 0 0 0;
+    color: #555;
+    font-size: 13px;
+  }
+
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  /* COLORS */
+  .sick .ring-progress { stroke: #ddab43; }
+  .casual .ring-progress { stroke: #4cb3ce; }
+  .earned .ring-progress { stroke: #4faf67; }
+  .compoff .ring-progress { stroke: #4a74e8; }
+  .annual .ring-progress { stroke: #d66b6d; }
+
+.table-scroll {
+  height: calc(100vh - 550px); /* perfect tested value */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+  border-bottom: 2px solid #eee; /* clean ending */
+}
+/* Sticky table header */
+.table-scroll table thead th {
+  position: sticky;
+  top: 0;
+  background: #f0f4fa;
+  z-index: 2;
+}

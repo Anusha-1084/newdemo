@@ -1,0 +1,61 @@
+<div class="reports-container">
+  <h2>My Leave Reports</h2>
+
+  <!-- Summary Cards -->
+  <div class="summary-cards">
+    <div class="card">
+      <div class="icon total"></div>
+      <div class="details">
+        <h3>{{ totalRequests }}</h3>
+        <p>Total Requests</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon approved"></div>
+      <div class="details">
+        <h3>{{ approvedRequests }}</h3>
+        <p>Approved Requests</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon days"></div>
+      <div class="details">
+        <h3>{{ totalDaysTaken }}</h3>
+        <p>Total Days Taken</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon average"></div>
+      <div class="details">
+        <h3>{{ averageDaysPerRequest }}</h3>
+        <p>Average Days per Request</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="charts-section">
+    <div class="chart-card">
+      <h4>📊 Leave Types Distribution</h4>
+      <canvas
+        baseChart
+        [data]="leaveTypeChart"
+        [options]="leaveTypeOptions"
+        chartType="pie"
+      ></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h4>📈 Monthly Leave Trends</h4>
+      <canvas
+        baseChart
+        [data]="leaveTrendChart"
+        [options]="leaveTrendOptions"
+        chartType="line"
+      ></canvas>
+    </div>
+  </div>
+</div>

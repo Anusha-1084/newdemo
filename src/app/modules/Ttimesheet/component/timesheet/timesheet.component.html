@@ -1,0 +1,31 @@
+<table class="ts-table" *ngIf="timesheets.length">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Total Hours</th>
+      <th>Type</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of timesheets">
+      <td data-label="Week">{{ t.startDate }} - {{ t.endDate }}</td>
+      <td data-label="Total Hours">{{ t.totalHours }}</td>
+      <td data-label="Type">
+        <span class="badge badge--type">{{ t.timesheetType }}</span>
+      </td>
+      <td data-label="Status">
+        <span class="badge"
+          [ngClass]="{
+            'badge--pending': t.status.toLowerCase() === 'pending',
+            'badge--approved': t.status.toLowerCase() === 'approved',
+            'badge--rejected': t.status.toLowerCase() === 'rejected'
+          }"
+        >{{ t.status }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="empty" *ngIf="!loading && !timesheets.length">No timesheets found.</div>
+<div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>

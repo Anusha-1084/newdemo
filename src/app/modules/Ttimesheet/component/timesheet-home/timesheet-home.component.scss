@@ -1,0 +1,35 @@
+.calendar-btn {
+  background: transparent !important;
+  border-radius: 12px;
+  border: 2px solid;
+  transition: all 0.2s ease;
+}
+
+/* 🔵 TODAY */
+.border-today {
+  border-color: #2563eb; /* Blue */
+  color: #2563eb;
+     font-weight: 700;
+}
+
+
+
+/* 🟢 LEAVE */
+.border-leave {
+  border-color: #16a34a; /* Professional Green */
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* 🟣 FESTIVAL / HOLIDAY */
+.border-holiday {
+  border-color: #7c3aed; /* Violet */
+  color: #6d28d9;
+  font-style: italic;
+}
+
+/* ⚪ NORMAL DAY */
+.border-normal {
+  border-color: #cbd5e1;
+  color: #64748b;
+}

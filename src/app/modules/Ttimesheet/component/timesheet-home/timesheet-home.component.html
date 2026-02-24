@@ -1,0 +1,113 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center mt- px-4">
+        <h4 class="fs-5 badge text-black fw-bold">Timesheet Calendar</h4>
+        <div class="text-end">
+          <span class="badge fs-5 text-black fw-bold">Time: {{ currentTime }}</span>
+        </div>
+      </div>
+
+      <div class="mt- px-4" style="background-color: #e7f0f5">
+        <div class="d-flex justify-content-between align-items-center px-2 pt-3">
+          <i class="fas fa-chevron-left fa-lg text-primary cursor-pointer" (click)="goToPreviousMonth()"></i>
+
+          <select class="form-select form-select-sm w-auto mb-1" [(ngModel)]="selectedMonth" (change)="onMonthOrYearChange()">
+            <option *ngFor="let month of months; let i = index" [value]="i">{{ month }}</option>
+          </select>
+
+          <h4 class="text-center mb-0 fw-bold text-black">
+            {{ displayedDate | date: 'MMMM yyyy' }}
+          </h4>
+
+          <select class="form-select form-select-sm w-auto mb-1" [(ngModel)]="selectedYear" (change)="onMonthOrYearChange()">
+            <option *ngFor="let year of years">{{ year }}</option>
+          </select>
+
+          <i class="fas fa-chevron-right fa-lg text-primary cursor-pointer" (click)="goToNextMonth()"></i>
+        </div>
+
+        <table class="table table-borderless text-center w-100" style="background-color: transparent">
+          <thead>
+            <tr>
+              <th *ngFor="let day of weekDays" class="text-black fw-bold" style="background-color: #8ebff3">
+                {{ day }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let week of calendarTable">
+              <td *ngFor="let day of week">
+
+  <!-- ONLY          render button if day exists -->
+<button
+  *ngIf="day"
+  class="btn btn-lg w-100 fw-bold calendar-btn"
+  [ngClass]="{
+    'border-leave': day.leave,
+    'border-weekend': day.isWeekend && !day.leave,
+    'border-holiday': day.holiday && !day.isWeekend && !day.leave,
+    'border-today': day.isToday && !day.isWeekend && !day.leave && !day.holiday,
+    'border-normal': !day.isToday && !day.isWeekend && !day.holiday && !day.leave
+  }"
+  [disabled]="day.disabled"
+>
+  <div class="d-flex flex-column align-items-center">
+
+    <div class="fw-bold">
+      {{ day.date | date:'d' }}
+    </div>
+
+    <div *ngIf="day.holiday" class="small fw-bold">
+      {{ day.holiday.name }}
+    </div>
+
+    <div *ngIf="day.isWeekend" class="small fw-bold">
+      Weekend
+    </div>
+
+    <div *ngIf="day.leave" class="small fw-bold">
+      {{ day.leave.leaveType }}
+    </div>
+  </div>
+</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Section              (unchanged) -->
+<div class="modal fade" tabindex="-1" [class.show]="showModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog" style="background-color: #e7f0f5">
+    <div class="modal-content" style="background-color: transparent">
+      <div class="modal-header">
+        <h4 class="modal-title text-black">Today's Timesheet</h4>
+        <button type="button" class="btn-close" (click)="showModal = false"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="workDone" class="form-label">Work done today</label>
+          <textarea class="form-control" id="workDone" [(ngModel)]="workDone" rows="2"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="blockers" class="form-label">Blockers</label>
+          <textarea class="form-control" id="blockers" [(ngModel)]="blockers" rows="2"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="plans" class="form-label">Tasks planned for tomorrow</label>
+          <textarea class="form-control" id="plans" [(ngModel)]="plans" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="showModal = false">Cancel</button>
+        <button class="btn btn-success" (click)="submitTimesheet()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

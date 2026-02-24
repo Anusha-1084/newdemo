@@ -1,0 +1,46 @@
+.user-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 50px);
+  padding: 8px;
+  // background-color: orange;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+
+  &:hover {
+    // background-color: #f0f0f0;
+    transform: scale(1.02);
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  &.selected {
+    background-color: #e0e0e0;
+    font-weight: bold;
+  }
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.name {
+  font-size: 15px;
+  color: #1d1d1d;
+}

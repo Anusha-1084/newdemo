@@ -1,0 +1,46 @@
+<div class="messages-container">
+
+  <header class="header">
+    <h2>Messages</h2>
+    <p>You have <strong>{{ unreadMessages }} unread messages.</strong></p>
+  </header>
+
+  <div class="content">
+   
+    <aside class="sidebar">
+      <button class="compose-btn" (click)="composeMessage()">Compose</button>
+
+      <select class="filter-dropdown">
+        <option value="Unread">Unread</option>
+        <option value="Read">Read</option>
+        <option value="All">All</option>
+      </select>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search" />
+        <button class="search-btn">🔍</button>
+      </div>
+
+      <div class="messages-list">
+        <p *ngIf="filterMessages().length === 0">You have no messages.</p>
+        <ul>
+          <li *ngFor="let message of filterMessages()" (click)="selectMessage(message)" [class.unread]="!message.read">
+            <strong>{{ message.sender }}</strong> - {{ message.subject }}
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+   
+    <main class="message-content">
+      <div *ngIf="!selectedMessage">
+        <p>Select a message thread to read it here.</p>
+      </div>
+      <div *ngIf="selectedMessage">
+        <h3>{{ selectedMessage.subject }}</h3>
+        <p><strong>From:</strong> {{ selectedMessage.sender }}</p>
+        <p>{{ selectedMessage.content }}</p>
+      </div>
+    </main>
+  </div>
+</div>

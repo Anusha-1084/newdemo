@@ -1,0 +1,74 @@
+.file-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fffef5;
+}
+
+.sidebar{
+  width: 70px;
+  background-color: orange;
+  padding-top: 50px;
+  position:fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+
+}
+
+.sidebar h3 {
+  font-size: 22px;
+  margin-bottom: 32px;
+  color: #fff;
+  text-align: left;
+  font-weight: 700;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav li {
+  margin-bottom: 14px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: #fff !important;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  font-size: 15px;
+  background-color: transparent;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: #e67e22;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.main-view {
+  flex-grow: 1;
+  padding: 32px;
+  background-color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  margin-left: 8px;
+  overflow-y: auto;
+  scrollbar-width: none;        
+  -ms-overflow-style: none; 
+      
+}
+.main-view::-webkit-scrollbar {
+  display: none;                
+}

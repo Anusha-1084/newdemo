@@ -1,0 +1,51 @@
+<div class="users-container">
+    <div class="mt-4 search-bar">
+      <div class="form-group d-flex align-items-center gap-4">
+        <div class="custom-dropdown">
+          <div class="select-wrapper">
+            <select class="bg-white" [(ngModel)]="searchFilter" (change)="updatePlaceholder()">
+              <option value="All">All</option>
+              <option value="id">Id</option>
+              <option value="name">Name</option>
+              <option value="username">Username</option>
+              <option value="email">Email</option>
+              <option value="mobile">Mobile</option> 
+            </select>
+            <span class="arrow"></span>
+          </div>
+        </div>
+        <input
+          type="text"
+          class="form-control w-200"
+          [placeholder]="searchPlaceholder"
+          [(ngModel)]="searchTerm"
+        />
+        <button class="btn btn-primary ml-2" (click)="onSearch()">Search</button>
+      </div>
+    </div>
+  
+    <table class="table table-striped mt-4">
+      <thead class="thead-dark">
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Mobile No</th>
+          <th>Actions</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.mobile_no }}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm" (click)="onView(user.id)">View</button>
+            <button class="btn btn-success btn-sm" (click)="onUpdate(user.id)">Update</button>
+            <button class="btn btn-danger btn-sm" (click)="onDelete(user.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

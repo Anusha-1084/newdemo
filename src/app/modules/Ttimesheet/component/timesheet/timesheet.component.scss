@@ -1,0 +1,207 @@
+/* ----------------- Theme tokens ----------------- */
+:host {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #1f2937;        /* gray-800 */
+  --muted: #6b7280;       /* gray-500 */
+  --border: #e5e7eb;      /* gray-200 */
+  --accent: #3b82f6;      /* blue-500 */
+  --accent-weak: #eff6ff; /* blue-50 */
+
+  --ok: #16a34a;          /* green-600 */
+  --ok-weak: #ecfdf5;     /* green-50 */
+
+  --warn: #d97706;        /* amber-600 */
+  --warn-weak: #fffbeb;   /* amber-50 */
+
+  --danger: #dc2626;      /* red-600 */
+  --danger-weak: #fef2f2; /* red-50 */
+}
+
+/* ----------------- Page layout ----------------- */
+.timesheet {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 8px 16px;
+  color: var(--text);
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 12px 0 18px;
+  letter-spacing: 0.2px;
+}
+
+/* Optional top tabs if you have them */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+
+  .tab {
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: box-shadow .15s ease, transform .05s ease;
+
+    &.active {
+      background: var(--accent-weak);
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    }
+
+    &:hover { transform: translateY(-1px); }
+  }
+}
+
+/* ----------------- Card wrapper ----------------- */
+.ts-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+/* ----------------- Table ----------------- */
+.ts-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+
+  thead {
+    background: #f9fafb; /* gray-50 */
+  }
+
+  th, td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  th {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: .2px;
+  }
+
+  tbody tr {
+    transition: background .15s ease;
+
+    &:hover { background: #fbfdff; } /* subtle */
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Make first column a bit wider on large screens */
+  td:first-child { width: 44%; }
+  td:nth-child(2) { width: 16%; }
+  td:nth-child(3) { width: 20%; }
+  td:nth-child(4) { width: 20%; }
+}
+
+/* ----------------- Badges ----------------- */
+.badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  letter-spacing: .2px;
+  border: 1px solid transparent;
+  user-select: none;
+
+  &--type {
+    background: var(--accent-weak);
+    color: var(--accent);
+    border-color: rgba(59,130,246,.25);
+  }
+
+  &--approved {
+    background: var(--ok-weak);
+    color: var(--ok);
+    border-color: rgba(22,163,74,.25);
+  }
+
+  &--pending {
+    background: var(--warn-weak);
+    color: var(--warn);
+    border-color: rgba(217,119,6,.25);
+  }
+
+  &--rejected {
+    background: var(--danger-weak);
+    color: var(--danger);
+    border-color: rgba(220,38,38,.25);
+  }
+}
+
+/* ----------------- Empty & Error states ----------------- */
+.empty, .error {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+}
+.error {
+  border-color: rgba(220,38,38,.25);
+  color: var(--danger);
+  background: var(--danger-weak);
+}
+
+/* ----------------- Responsive (stack rows as cards) ----------------- */
+@media (max-width: 760px) {
+  .ts-table, .ts-table thead, .ts-table tbody, .ts-table th, .ts-table td, .ts-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .ts-table thead {
+    display: none; /* hide header */
+  }
+
+  .ts-table tr {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 10px 0;
+    padding: 10px 10px 6px;
+    background: var(--card);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  }
+
+  .ts-table td {
+    border: 0;
+    padding: 8px 10px;
+    position: relative;
+  }
+
+  .ts-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+  }
+
+  td:first-child, td:nth-child(2), td:nth-child(3), td:nth-child(4) {
+    width: 100%;
+  }
+}

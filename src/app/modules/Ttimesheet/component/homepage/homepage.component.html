@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-between align-items-center align-items-startm-4 p-3 ms-1" style="background-color: rgb(169, 224, 237);">
+  <div *ngIf="userData && !isLoading"
+       class="card  text-center p-3"
+       style="width: 200px; height: 200px; margin-top: 0px; background-color:#e7f0f5; ">
+ 
+    <!-- Profile Image -->
+    <div class="bg-secondary rounded-circle mx-auto d-flex align-items-center justify-content-center overflow-hidden mb-2"
+         style="width: 60px; height: 60px;">
+      <img [src]="'data:image/png;base64,' + userData.profileImage"
+           alt="Profile Picture"
+           class="img-fluid rounded-circle"
+           style="width: 100%; height: auto;" />
+    </div>
+
+    <!-- Name and ID -->
+    <h6 class="mb-1 text-truncate" style="font-size: 0.85rem;">
+      {{ userData.id }} - <strong>{{ userData.firstName }} {{ userData.lastName }}</strong>
+    </h6>
+
+    <!-- Bio -->
+    <p class="text-muted mb-1 small text-truncate">{{ userData.bio }}</p>
+
+    <!-- Status -->
+    <span class="fw-bold d-block mb-1"
+          [ngClass]="status === 'OUT' ? 'text-danger' : 'text-success'">
+      {{ status }}
+    </span>
+
+    <!-- Check-in Time -->
+    <div class="fs-6 mb-1">
+      <span>{{ checkInTime }}</span>
+    </div>
+
+    <!-- Button -->
+    <button class="btn btn-sm btn-success w-100" (click)="toggleStatus()">
+      {{ status === 'OUT' ? 'Check-in' : 'Check-out' }}
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center">
+    <p>Loading profile data...</p>
+  </div>
+
+  <!-- ✅ Welcome Header (Right side) -->
+  <div class="d-flex align-items-center">
+  <h2 class="welcome-heading fw-bold mb-0 .weekend-btn" style="font-size:3rem;color: rgb(127, 168, 244); margin-right: 80px;">
+    Welcome to Timesheet <strong class="text-skyblue">{{ userData?.firstName }} {{ userData?.lastName }}</strong>
+  </h2>
+</div>
+
+
+</div>
+
+<app-timesheet-home></app-timesheet-home>
+
+
+
+
+

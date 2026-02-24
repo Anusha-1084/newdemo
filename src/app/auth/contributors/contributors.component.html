@@ -1,0 +1,72 @@
+<div class="contributors-page">
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Meet Our Team</h1>
+    <p>Innovators | Builders | Leaders</p>
+
+     <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Search by name, role, or designation..."
+      #searchBox 
+      (keyup)="searchTerm = searchBox.value"
+      class="search-box"
+    />
+  </div>
+  </div>
+
+  
+  <div class="card-grid">
+  <!-- Architect Section -->
+  <section class="team-section architect" *ngIf="(architects | searchFilter: searchTerm).length > 0">
+    <h2>Project Architect</h2>
+    <div class="highlight-card" *ngFor="let member of architects | searchFilter: searchTerm" (click)="openProfile(member)">
+      <img [src]="member.imageSrc || 'assets/default-user.png'" alt="{{member.name}}">
+      <h3>{{member.name}}</h3>
+      <span class="badge">{{member.role}}</span>
+      <p>{{member.designation}}</p>
+    </div>
+  </section>
+
+  <!-- Team Leads Section -->
+  <section class="team-section leads" *ngIf="(teamLeads | searchFilter: searchTerm).length > 0">
+    <h2>Our Team Leads</h2>
+    <div class="team-grid">
+      <div class="team-card" *ngFor="let member of teamLeads | searchFilter: searchTerm" (click)="openProfile(member)">
+        <img [src]="member.imageSrc || 'assets/default-user.png'" alt="{{member.name}}">
+        <h3>{{member.name}}</h3>
+        <span class="badge">{{member.role}}</span>
+        <p>{{member.designation}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developers Section -->
+  <section class="team-section developers" *ngIf="(developers | searchFilter: searchTerm).length > 0">
+    <h2>Developers</h2>
+    <div class="team-grid">
+      <div class="team-card" *ngFor="let member of developers | searchFilter: searchTerm" (click)="openProfile(member)">
+        <img [src]="member.imageSrc || 'assets/default-user.png'" alt="{{member.name}}">
+        <h3>{{member.name}}</h3>
+        <span class="badge">{{member.role}}</span>
+        <p>{{member.designation}}</p>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- Profile Modal -->
+<div class="profile-modal" *ngIf="selectedMember">
+  <div class="profile-modal-overlay" (click)="closeProfile()"></div>
+  <div class="profile-modal-content">
+    <button class="close-btn" (click)="closeProfile()">×</button>
+    <img [src]="selectedMember.imageSrc || 'assets/default-user.png'" alt="{{selectedMember.name}}" />
+    <h2>{{ selectedMember.name }}</h2>
+    <span class="badge">{{ selectedMember.role }}</span>
+    <p>{{ selectedMember.designation }}</p>
+    <p><em>More details about this contributor can go here...</em></p>
+  </div>
+</div>
+
+</div>

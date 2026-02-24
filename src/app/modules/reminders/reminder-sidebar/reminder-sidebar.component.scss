@@ -1,0 +1,90 @@
+.reminder-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.reminder-sidebar {
+  width: 240px;
+  background: #495057;
+  border-right: 1px solid #495057;
+  padding: 20px;
+  position: fixed;
+  top: 60px;   /* start below navbar */
+  bottom: 0;
+  z-index: 1000;
+}
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffffff;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 12px 0;
+
+      a {
+        display: block;
+        padding: 12px 18px;
+        color: #dfe4ea;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #57606f;
+          color: #ffffff;
+        }
+
+        &.active {
+          background-color: #1e90ff;
+          color: #ffffff;
+          font-weight: bold;
+        }
+      }
+    }
+  }ng
+/* Main content */
+.reminder-content {
+  flex: 1;
+  margin-left: 240px;  /* same width as sidebar */
+  padding: 25px;
+  background: #f5f6fa;
+  margin-top: 60px;    /* push down below navbar */
+}
+
+/* Buttons */
+.btn-custom {
+  margin: 5px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-modify {
+  background-color: #1e90ff;
+  color: #fff;
+
+  &:hover {
+    background-color: #0d6efd;
+  }
+}
+
+.btn-delete {
+  background-color: #ff4757;
+  color: #fff;
+
+  &:hover {
+    background-color: #e84118;
+  }
+}

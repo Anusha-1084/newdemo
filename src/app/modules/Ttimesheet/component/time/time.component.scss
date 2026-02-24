@@ -1,0 +1,19 @@
+.top-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .tab {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #e0e0e0;
+      color: #000;
+      cursor: pointer;
+
+      &.active {
+        background: #007bff;
+        color: #fff;
+      }
+    }
+  }
