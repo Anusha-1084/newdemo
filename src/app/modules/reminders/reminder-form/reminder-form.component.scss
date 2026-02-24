@@ -1,0 +1,105 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 15px; ;
+  margin-left: 600px; /* match sidebar width */
+  width: calc(100% - 250px);
+  background: #f6f8fc;
+  box-sizing: border-box;
+}
+
+.reminder-card {
+//  position: fixed;
+//  width: 100%;
+  //max-width: 800px; /* narrower for better readability */
+padding: 16px 20px;
+ border-radius: 10px;
+ background: white;
+ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+position: fixed;
+  top: 80px;               /* adjust this if your navbar height differs */
+  left: 600px;             /* match your sidebar width */
+  right: 500px;             /* some right margin */
+  bottom: 40px;            /* space from bottom */
+  box-sizing: border-box;
+  overflow-y: auto;        
+
+}
+
+.form-title {
+  text-align: left;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.reminder-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 🔹 Make each row vertical instead of side-by-side */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Make all mat-form-fields fill the width */
+.full-width,
+.half-width,
+mat-form-field {
+  width: 100% !important;
+}
+
+.attachment {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* Hide the default ugly file input */
+.attachment input[type="file"] {
+  display: none;
+}
+
+/* Create a custom upload button */
+.attachment label[for="fileInput"] {
+  display: inline-block;
+  background-color: #007bff; /* 🔹 Button color (blue) */
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  width: fit-content;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.attachment label[for="fileInput"]:hover {
+  background-color: #0056b3;
+}
+
+/* Show selected file name */
+.attachment div {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Remove button styling */
+.attachment button {
+  width: fit-content;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-weight: 600;
+  margin-top: 10px;
+}

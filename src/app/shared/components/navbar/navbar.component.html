@@ -1,0 +1,111 @@
+<!-- Top thin trigger bar -->
+<!-- <div class="navbar-trigger-bar" (mouseenter)="showNavbar()"></div> -->
+
+<!-- Top Navbar -->
+<!-- <nav 
+  class="navbar navbar-expand-lg custom-navbar" 
+  [ngClass]="{ 'visible': navbarVisible }"
+  (mouseenter)="onMouseEnterNavbar()" 
+  (mouseleave)="onMouseLeaveNavbar()"
+>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="timesheet/" routerLinkActive="active">Timesheet</a></li>
+      <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="ticket/">Ticket</a></li>
+      <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="chat/">Chat</a></li>
+      <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="meet/">Video-Meet</a></li>
+      <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="mytask/">My Task</a></li>
+      <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="file/">File</a></li>
+      <li class="nav-item"><a class="nav-link font-weight-bold" routerLink="meeting-landing" routerLinkActive="active">Meeting-Landing</a></li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="/layout/reminders">
+          Reminder <span class="dropdown-arrow">&#9660;</span>
+        </a>
+      </li>
+    </ul>
+
+    <form class="form-inline mx-auto search-bar">
+      <input class="form-control" type="search" placeholder="Search for anything" />
+    </form>
+
+    <ul class="navbar-nav ml-auto align-items-center">
+      <li class="nav-item" (click)="onCartIconClick()">
+        <div *ngIf="firstNameInitial && lastNameInitial" class="d-flex align-items-center">
+          <div class="Name_logo position-relative">
+            {{ firstNameInitial }}{{ lastNameInitial }}
+            <span class="status-dot" [ngClass]="{
+              'online': status === 'ONLINE',
+              'offline': status === 'OFFLINE',
+              'inmeeting': status === 'IN MEETING'
+            }"></span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+
+
+
+
+
+
+<!-- Top thin trigger bar -->
+<div class="navbar-trigger-bar" (mouseenter)="showNavbar()"></div>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg custom-navbar" [ngClass]="{ 'visible': navbarVisible }"
+  (mouseenter)="onMouseEnterNavbar()" (mouseleave)="onMouseLeaveNavbar()">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="timesheet/" routerLinkActive="active">Timesheet</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="ticket/">Ticket</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="chat/">Chat</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="mytask/">My Task</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="file/">File</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="meeting-landing" routerLinkActive="active">Meeting-Landing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="/layout/reminders">
+          Reminder
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" routerLink="leave-management/">Leave-management</a>
+      </li>
+    </ul>
+
+    <form class="form-inline mx-auto search-bar">
+      <input class="form-control" type="search" placeholder="Search for anything" />
+    </form>
+
+    <ul class="navbar-nav ml-auto align-items-center">
+      <li class="nav-item">
+        <div *ngIf="firstNameInitial && lastNameInitial" class="d-flex align-items-center user-profile-section">
+          <div class="Name_logo position-relative" (click)="onCartIconClick()">
+            {{ firstNameInitial }}{{ lastNameInitial }}
+            <span class="status-dot" [ngClass]="{
+                'online': status === 'ONLINE',
+                'offline': status === 'OFFLINE',
+                'inmeeting': status === 'IN MEETING'
+              }"></span>
+          </div>
+          <!-- Logout Button -->
+          <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

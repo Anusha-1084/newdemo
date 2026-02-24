@@ -1,0 +1,25 @@
+<div class="reminder-page">
+  <!-- Sidebar -->
+  <aside class="reminder-sidebar">
+    <h2>Reminders</h2>
+    <ul>
+      <li>
+        <a routerLink="/layout/reminders/list" 
+           routerLinkActive="active" 
+           [routerLinkActiveOptions]="{ exact: true }">
+          My Reminder
+        </a>
+      </li>
+      <li>
+        <a routerLink="/layout/reminders/new" routerLinkActive="active">
+          Create Reminder
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Right: child content -->
+  <div class="reminder-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

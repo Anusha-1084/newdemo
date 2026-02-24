@@ -1,0 +1,10 @@
+<div class="admin-layout">
+    <app-instructor-navbar (profileClicked)="toggleSidebar()"></app-instructor-navbar>
+    <app-instructor-sidebar [isSidebarOpen]="isSidebarOpen"></app-instructor-sidebar>
+    <!-- Content Area -->
+    <div class="content-area">
+        <router-outlet />
+    </div>
+    <!-- Footer -->
+    <app-footer-section></app-footer-section>
+</div> 

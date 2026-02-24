@@ -1,0 +1,45 @@
+<div class="account-sidebar d-flex">
+  <!-- User Info Section -->
+  <div class="sidebar-container">
+
+    <div class="user-info">
+      <div class="user-avatar">ST</div>
+      <div class="user-name"><strong>Sachin Tendulkar</strong></div>
+    </div>
+
+    <div>
+      <ul class="profile-options">
+        <li (click)="selectOption('profile')" [class.active]="selectedOption === 'profile'">
+          <a routerLink="/admin-layout/account-settings/profile" routerLinkActive="active">Profile</a>
+        </li>
+        <li (click)="selectOption('photo')" [class.active]="selectedOption === 'photo'">
+          <a routerLink="/admin-layout/account-settings/photo" routerLinkActive="active">Photo</a>
+        </li>
+        <li (click)="selectOption('account-security')" [class.active]="selectedOption === 'account-security'">
+          <a routerLink="/admin-layout/account-settings/account-security">Account Security</a>
+        </li>
+        <!-- <li (click)="selectOption('subscriptions')" [class.active]="selectedOption === 'subscriptions'">
+          Subscriptions
+        </li>
+        <li (click)="selectOption('payments')" [class.active]="selectedOption === 'payments'">
+          Payment methods
+        </li> -->
+        <li (click)="selectOption('privacy')" [class.active]="selectedOption === 'privacy'">
+          <a routerLink="/admin-layout/account-settings/privacy">Privacy</a>
+        </li>
+        <!-- <li (click)="selectOption('notifications')" [class.active]="selectedOption === 'notifications'">
+          Notifications
+        </li>
+        <li (click)="selectOption('api-clients')" [class.active]="selectedOption === 'api-clients'">
+          API clients
+        </li> -->
+        <li (click)="selectOption('close-account')" [class.active]="selectedOption === 'close-account'">
+          <a routerLink="/admin-layout/account-settings/close-account">Close account</a>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="account-router"> <router-outlet></router-outlet></div>
+
+</div>

@@ -1,0 +1,259 @@
+.contributors-page {
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+
+  
+
+  /* Hero Header */
+  .hero {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+  }
+
+ .search-container {
+  display: flex;
+  justify-content: flex-end; // pushes to right
+}
+
+.search-box {
+  width: 250px;  // fixed width (you can adjust)
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+
+  /* Section Wrapper */
+  .team-section {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #34495e;
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        margin: 0.5rem auto 0;
+        background: #3498db;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  /* Architect Highlight */
+  .architect {
+    background: #f5f9ff;
+
+    .highlight-card {
+      display: inline-block;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      max-width: 280px;
+      margin: auto;
+      transition: transform 0.3s;
+
+      &:hover {
+        background: #eaf3fc;   // very light blue
+        transform: translateY(-6px);
+      }
+
+      img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #3498db;
+        margin-bottom: 1rem;
+      }
+
+      .badge {
+        background: #3498db;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  /* Team Grid */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Team Card */
+  .team-card , .highlight-card{
+    background: #fff;
+    border-radius: 14px;
+    position: relative;
+    cursor: pointer;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      background: #eaf3fc;   // very light blue
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #2ecc71;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover img {
+    transform: scale(1.1);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+      color: #2c3e50;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #7f8c8d;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #2ecc71;
+      color: white;
+      padding: 0.3rem 0.7rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  /* Section Background Variations */
+  .leads {
+    background: #fafafa;
+
+    .team-card img {
+      border-color: #e67e22;
+    }
+
+    .badge {
+      background: #e67e22;
+    }
+  }
+
+  .developers {
+    background: #fff;
+
+    .team-card img {
+      border-color: #9b59b6;
+    }
+
+    .badge {
+      background: #9b59b6;
+    }
+  }
+
+  .profile-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+
+  .profile-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+  }
+
+  .profile-modal-content {
+    position: relative;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    max-width: 400px;
+    text-align: center;
+    z-index: 2001;
+    animation: scaleIn 0.3s ease forwards;
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #3498db;
+    }
+
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      background: #3498db;
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #e74c3c;
+      }
+    }
+  }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+}

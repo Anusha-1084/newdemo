@@ -1,0 +1,16 @@
+.wishlist-container{
+    display: flex;
+    height: 256px;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+
+    button{
+        font-size: 16px;
+        background-color: #1C1D1F;
+        color: #fff;
+        padding: 12px 8px;
+        border-radius: 5px;
+        border: none;
+    }
+}

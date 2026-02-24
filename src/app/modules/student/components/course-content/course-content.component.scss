@@ -1,0 +1,81 @@
+/* Main Content Styles */
+.main-content {
+  flex: 3;
+  padding: 20px;
+}
+
+.video-player {
+  margin-bottom: 20px;
+}
+
+.video-element {
+  width: 75%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-top: 20px;
+  position: relative; /* Added for underline positioning */
+}
+
+.tab {
+  background-color: transparent;
+  border: none;
+  color: #555;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  font-weight: normal;
+  outline: none;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.tab:hover {
+  color: #000;
+}
+
+
+.tab.active::after {
+  content: "";
+  display: block;
+  margin: 5px auto 0;
+  height: 2px;
+  width: 100%;
+  background-color: #000;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  transition: left 0.1s ease, width 0.1s ease; /* Smooth underline transition */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  flex: 1;
+  border-left: 1px solid #ddd;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.sidebar li span:hover {
+  text-decoration: underline;
+  color: #000000;
+  cursor: pointer;
+}

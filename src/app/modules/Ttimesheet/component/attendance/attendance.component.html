@@ -1,0 +1,51 @@
+<div class="attendance-table ms-5">
+  <div class="row header">
+     <div class="cell">Day</div>
+    <div class="cell">Check-In</div>
+    <div class="cell">Check-Out</div>
+    <div class="cell">Total Hours</div>
+    <div class="cell">Status</div>
+     <div class="cell"></div>
+  </div>
+
+  <div *ngFor="let record of weeklyData" class="row"
+       [ngClass]="{
+         'weekend': record.attendance_status === 'Weekend',
+         'present': record.attendance_status === 'Present',
+         'absent': record.attendance_status === 'Absent'
+       }">
+    <div class="cell">                                
+      <strong>{{ record.day }}</strong><br />
+      {{ record.date }}
+    </div>
+
+    <div class="cell">
+      {{ record.first_check_in_time ? record.first_check_in_time.split(' ')[1] : 'No Check-in' }}
+    </div>
+
+    <div class="cell">
+      {{ record.last_check_out_time ? record.last_check_out_time.split(' ')[1] : 'No Check-out' }}
+    </div>
+
+    <div class="cell">
+      {{ record.totalHours }}
+    </div>
+
+    <div class="cell status">
+      {{ record.attendance_status }}
+    </div>
+
+    
+  </div>
+</div>
+
+<div class="bottom-actions">
+  <button class="btn confirm-btn" (click)="onConfirmAll()">Confirm</button>
+  <button class="btn issue-btn" (click)="redirectToCreateTicket()">Any Issue</button>
+</div>
+<div class="popup" *ngIf="showPopup">
+  <div class="popup-content">
+    <p>Successfully confirmeation!</p>
+    <button (click)="closePopup()">OK</button>
+  </div>
+</div>

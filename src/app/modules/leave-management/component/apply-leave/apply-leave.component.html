@@ -1,0 +1,49 @@
+<div class="apply-leave-container">
+  <div class="leave-form-container">
+    <h2>Apply for Leave</h2>
+    <form [formGroup]="leaveForm" (ngSubmit)="submitLeave()" class="form-content" >
+
+      <!-- Leave Type -->
+      <label for="leaveType">Leave Type *</label>
+      <select id="leaveType" formControlName="leaveType">
+        <option value="">Select leave type</option>
+        <option *ngFor="let type of leaveTypes" [value]="type">{{ type }}</option>
+      </select>
+
+      <!-- Leave Duration (NEW) -->
+<label for="leaveDuration">Leave Duration *</label>
+<select id="leaveDuration" formControlName="leaveDuration">
+  <option value="">Select leave duration</option>
+  <option value="HALF_TIME">Half Time</option>
+  <option value="FULL_TIME">Full Time</option>
+</select>
+
+
+      <!-- Start and End Dates -->
+      <div class="date-container">
+        <div>
+          <label for="startDate">Start Date *</label>
+          <input type="date" id="startDate" formControlName="startDate">
+        </div>
+        <div>
+          <label for="endDate">End Date *</label>
+          <input type="date" id="endDate" formControlName="endDate">
+        </div>
+      </div>
+
+      <!-- Reason -->
+      <label for="reason">Reason for Leave *</label>
+      <textarea id="reason" formControlName="reason" placeholder="Please provide a reason for your leave request..."></textarea>
+
+      <!-- Attachment -->
+      <label for="attachment">Attachment (Optional)</label>
+      <input type="file" id="attachment" (change)="onFileChange($event)">
+
+      <!-- Buttons -->
+      <div class="button-container">
+        <button type="submit" [disabled]="leaveForm.invalid" class="submit-btn">Submit Request</button>
+        <button type="button" (click)="cancelLeave()" class="cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

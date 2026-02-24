@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="content-wrapper">
+    <div class="sidebar" [ngClass]="{ 'shift-up': !topNavbarVisible }">
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a routerLink="/layout/timesheet/homepage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" title="Home">
+              <i class="fas fa-home"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/layout/timesheet/time" routerLinkActive="active" title="Time">
+              <i class="fas fa-clock"></i>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/layout/timesheet/attendance" routerLinkActive="active" title="Attendance">
+              <i class="fas fa-calendar-check"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/settings" routerLinkActive="active" title="Search">
+              <i class="fas fa-search"></i>
+            </a>
+          </li>
+
+          <li *ngIf="isAdmin()">
+             <a routerLink="/layout/timesheet/approve-timesheet" routerLinkActive="active" title="Approve Timesheet">
+              <i class="fas fa-check-circle"></i>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

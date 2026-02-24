@@ -1,0 +1,195 @@
+
+<div class="home-container">
+  <header class="header">
+
+
+    <div class="logo fw-bold fs-2 ">
+      <img src="../../../assets/startahb-logo.jpg" alt="StartAhb Logo" class="logo-image">
+    </div>
+
+    <div class="header-right-content">
+      <div class="auth-buttons" *ngIf="!isLoggedIn">
+        <button class="btn" (click)="setActiveTab('signin', $event)">
+          Sign In
+        </button>
+        <button class="btn" (click)="setActiveTab('signup', $event)">
+          Sign Up
+        </button>
+      </div>
+      <div class="auth-buttons" *ngIf="isLoggedIn">
+        Welcome, {{ username }} | <a (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-carousel-section">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators"
+          *ngFor="let item of carouselItems; let i = index" [attr.data-bs-slide-to]="i" [class.active]="i === 0"
+          [attr.aria-current]="i === 0 ? 'true' : null" attr.aria-label="Slide {{i + 1}}"></button>
+      </div>
+      <div class="carousel-inner">
+
+        <div class="carousel-item" *ngFor="let item of carouselItems; let i = index" [class.active]="i === 0">
+          <div class="carousel-content">
+            <div class="left-carousel-content">
+              <h1 class="carousel-title">{{ item.heading }}</h1>
+              <p class="carousel-description">{{ item.description }}</p>
+              <button class="btn btn-primary carousel-button" >
+                Explore All Features
+              </button>
+            </div>
+            <div class="right-carousel-content">
+              <img [src]="item.imgSrc" class="d-block w-100 carousel-image" [alt]="item.heading">
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+  <section class="features-section">
+    <h2 class="section-title">Powerful Features at Your Fingertips</h2>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let f of features">
+        <div class="feature-icon-wrapper ">
+          <img [src]="f.icon" alt="{{ f.title }} Icon" class="feature-icon" />
+        </div>
+        <div class="feature-content">
+          <h3>{{ f.title }}</h3>
+          <p>{{ f.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="cta-section">
+    <lottie-player src="https://lottie.host/a1957b2b-6d8c-48e7-9248-5b196fa1ebc9/E57HWQdwud.json"
+      background="transparent" speed="1" loop autoplay class="cta-lottie-background"
+      style="width: 600px; height: 300px;"></lottie-player>
+
+    <div class="cta-content">
+      <h2 class="cta-title" data-text="Ready to Transform Your Business?"></h2>
+      <p class="cta-description">
+        Join StartUpCRM today and experience the difference.
+      </p>
+      <button class="cta-button">
+        Get Started Free
+      </button>
+    </div>
+  </section>
+
+
+
+ <div class="contributor-reveal-wrapper">
+  <button class="contributor-reveal-btn" (click)="toggleContributors()">
+    <i class="fas fa-users-cog"></i> {{ showContributors ? 'Hide Team Structure' : 'Meet Our Team' }}
+  </button>
+</div>
+
+<div class="contributor-section-container" *ngIf="showContributors">
+  <section class="contributor-section">
+    <div class="contributor-title-wrapper">
+      <h2 class="contributor-section-title">Project Contributors</h2>
+      <p class="contributor-section-subtitle">Meet the dedicated team behind the scenes.</p>
+    </div>
+
+    <div class="fixed-hierarchy-wrapper">
+
+      <div class="hierarchy-level level-architect">
+        <div class="contributor-node architect-node animated-node-fade-in" style="--node-delay: 0s;">
+          <div class="node-image-wrapper">
+            <img [src]="contributors[0].imageSrc" [alt]="contributors[0].name" class="node-image">
+          </div>
+          <div class="node-details">
+            <span class="node-name">{{ contributors[0].name }}</span>
+            <span class="node-role">{{ contributors[0].role }}</span>
+            <span class="node-designation">{{ contributors[0].designation }}</span>
+          </div>
+        </div>
+      </div>
+
+   <div class="hierarchy-level level-team-leads">
+  <div class="team-leads-carousel">
+    <div class="team-leads-track">
+      <!-- First set -->
+      <ng-container *ngFor="let member of teamLeads">
+        <div class="contributor-node lead-node">
+          <div class="node-image-wrapper">
+            <img [src]="member.imageSrc" [alt]="member.name" class="node-image">
+          </div>
+          <div class="node-details">
+            <span class="node-name">{{ member.name }}</span>
+            <span class="node-role">{{ member.role }}</span>
+            <span class="node-designation">{{ member.designation }}</span>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Duplicate set for smooth looping -->
+      <ng-container *ngFor="let member of teamLeads">
+        <div class="contributor-node lead-node">
+          <div class="node-image-wrapper">
+            <img [src]="member.imageSrc" [alt]="member.name" class="node-image">
+          </div>
+          <div class="node-details">
+            <span class="node-name">{{ member.name }}</span>
+            <span class="node-role">{{ member.role }}</span>
+            <span class="node-designation">{{ member.designation }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+
+    </div> 
+    <div class="developers-scrolling-container">
+      <div class="developers-marquee-track">
+        <ng-container *ngFor="let member of contributors.slice(10); let i = index">
+          <div class="contributor-node developer-node">
+            <div class="node-image-wrapper">
+              <img [src]="member.imageSrc" [alt]="member.name" class="node-image">
+            </div>
+            <div class="node-details">
+              <span class="node-name">{{ member.name }}</span>
+              <span class="node-role">{{ member.role }}</span>
+              <span class="node-designation">{{ member.designation }}</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <button (click)="goToContributors()" class="btn btn-primary">
+        Show Full Team
+    </button>
+  </section>
+</div>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 StartUpCRM. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </footer>
+</div>

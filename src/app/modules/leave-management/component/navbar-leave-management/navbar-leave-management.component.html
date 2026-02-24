@@ -1,0 +1,32 @@
+<div class="app-layout">
+  <!-- Left sidebar -->
+  <div class="sidebar">
+      <!-- Menu buttons -->
+    <div class="nav-items">
+      <button class="nav-btn" routerLink="employee-dashboard" routerLinkActive="active">
+        <span class="material-icons">dashboard</span>Dashboard
+      </button>
+
+      <button class="nav-btn" routerLink="apply-leave" routerLinkActive="active">
+        <span class="material-icons">add_circle_outline</span>Apply Leave
+      </button>
+
+      <button class="nav-btn" routerLink="my-requests" routerLinkActive="active">
+        <span class="material-icons">list_alt</span>My Requests
+      </button>
+
+      <button class="nav-btn" routerLink="reports" routerLinkActive="active">
+        <span class="material-icons">bar_chart</span>Reports
+      </button>
+
+      <button class="nav-btn" routerLink="manager-dashboard"routerLinkActive="active">
+        <span class="material-icons">manage_accounts</span>Manager Dashboard
+      </button>
+    </div>
+  </div>
+
+  <!-- Right main content -->
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

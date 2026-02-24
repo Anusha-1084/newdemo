@@ -1,0 +1,63 @@
+
+<div class="auth-form-container">
+  <h2 class="form-title">Welcome Back!</h2>
+  <p class="form-subtitle">Sign in to your account to continue.</p>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="auth-form">
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Username, Email or Phone Number</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="email"
+        autocomplete="username"
+      />
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
+        Username, Email or Phone Number is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field password-field">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        formControlName="password"
+        autocomplete="current-password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="togglePasswordVisibility()"
+        aria-label="Toggle password visibility"
+      >
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="passwordLengthError()">
+        Password must be at least 6 characters.
+      </mat-error>
+      <mat-error *ngIf="passwordAlphanumericError()">
+        Password must be alphanumeric.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <a class="forgot-password-link" (click)="ForgotPassword()">Forgot Password?</a>
+    </div>
+
+    <button mat-raised-button type="submit" class="submit-btn login-btn">
+      Login
+    </button>
+
+    <div class="social-login-divider">
+      <span>OR</span>
+    </div>
+
+    <div id="google-signin-button" class="social-btn google-btn"></div>
+    <button mat-stroked-button type="button" class="social-btn github-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub icon" class="social-icon">
+      Sign in with GitHub
+    </button>
+  </form>
+</div>

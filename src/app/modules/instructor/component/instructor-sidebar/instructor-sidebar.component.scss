@@ -1,0 +1,104 @@
+.main-dashboard-container {
+    display: flex;
+    background-color: transparent;
+    justify-content: end;
+
+    .collapse-open {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 25%;
+    }
+
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 260px;
+        height: 600px;
+        background-color: #fff;
+        position: fixed;
+        border-right: #ccc 1px solid;
+        right: -260px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+
+        &.open {
+            right: 0;
+        }
+
+
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 10px;
+            gap: 80px;
+            border-bottom: 1px solid #ccc;
+
+            .user-name {
+                font-size: 1.3rem;
+                font-weight: 500;
+            }
+
+            .toggole-icon-close {
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+
+            .nav-items {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding-left: 12px;
+
+                li {
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                    padding: 10px;
+                    cursor: pointer;
+
+                    a {
+                        color: #000;
+                        font-size: 1.1rem;
+                    }
+
+                    mat-icon {
+                        font-size: 1.3rem;
+                    }
+
+                }
+            }
+        }
+
+        .logout-btn {
+            width: 150px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}

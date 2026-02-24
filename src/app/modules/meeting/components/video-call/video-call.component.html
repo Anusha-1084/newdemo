@@ -1,0 +1,93 @@
+<div class="video-chat-wrapper" [ngClass]="{ 'chat-open': showChat, 'participants-open': showParticipants }">
+
+  <!-- 🎥 VIDEO SECTION -->
+  <div class="video-container">
+    <video #videoElement autoplay muted playsinline></video>
+
+    <video
+  #screenVideoElement
+  *ngIf="screenSharing"
+  class="screen-video"
+  autoplay
+  muted
+  playsinline>
+</video>
+
+  </div>
+
+  <!-- 👥 PARTICIPANTS WHITE SIDEBAR -->
+  <div class="participants-sidebar" *ngIf="showParticipants">
+    <app-participants [data]="{ meetingId: meetingId }"></app-participants>
+  </div>
+
+  <!-- 💬 CHAT PANEL -->
+  <div class="chat-container" *ngIf="showChat">
+    <app-chat
+      [roomId]="meetingId"
+      [username]="username"
+      [messages]="chatMessages"
+      (messageSent)="handleMessageSent($event)">
+    </app-chat>
+  </div>
+</div>
+
+<!-- 🧭 GOOGLE MEET–STYLE TOOLBAR -->
+<div class="bottom-toolbar">
+  <div class="toolbar-buttons">
+
+    <!-- 🎙️ Mute / Unmute -->
+    <button class="toolbar-btn" mat-icon-button (click)="toggleMute()" matTooltip="Mute / Unmute">
+      <mat-icon>{{ isMuted ? 'mic_off' : 'mic' }}</mat-icon>
+    </button>
+
+    <!-- 🎥 Start / Stop Video -->
+    <button class="toolbar-btn" mat-icon-button (click)="toggleVideo()" matTooltip="Start / Stop Video">
+      <mat-icon>{{ isVideoStopped ? 'videocam_off' : 'videocam' }}</mat-icon>
+    </button>
+
+    <!-- ✋ Raise Hand -->
+    <button class="toolbar-btn" mat-icon-button (click)="raiseHand()" matTooltip="Raise Hand">
+      <mat-icon>back_hand</mat-icon>
+    </button>
+
+    <!-- 👥 Participants -->
+    <button class="toolbar-btn" mat-icon-button (click)="openParticipants()" matTooltip="Participants">
+      <mat-icon>groups</mat-icon>
+    </button>
+
+    <!-- 💬 Chat -->
+    <button class="toolbar-btn" mat-icon-button (click)="openChat()" matTooltip="Chat">
+      <mat-icon>chat</mat-icon>
+    </button>
+
+    <!-- 😊 Reactions -->
+    <button class="toolbar-btn" mat-icon-button (click)="toggleReactions()" matTooltip="Reactions">
+      <mat-icon>mood</mat-icon>
+    </button>
+
+    <!-- Emoji Picker -->
+    <div class="emoji-picker" *ngIf="showEmojiPicker">
+      <button (click)="sendReaction('👍')">👍</button>
+      <button (click)="sendReaction('👏')">👏</button>
+      <button (click)="sendReaction('😂')">😂</button>
+      <button (click)="sendReaction('❤️')">❤️</button>
+      <button (click)="sendReaction('🔥')">🔥</button>
+      <button (click)="sendReaction('😮')">😮</button>
+    </div>
+
+    <!-- 🖥️ Share Screen -->
+    <button class="toolbar-btn" mat-icon-button (click)="shareScreen()" matTooltip="Share Screen">
+      <mat-icon>screen_share</mat-icon>
+    </button>
+
+    <!-- ⚙️ Settings -->
+    <button class="toolbar-btn" mat-icon-button (click)="openSecurityOptions()" matTooltip="Settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+
+    <!-- 🔴 Leave Call -->
+    <button class="toolbar-btn leave-btn" mat-icon-button (click)="leaveCall()" matTooltip="Leave Call">
+      <mat-icon>call_end</mat-icon>
+    </button>
+  </div>
+</div>

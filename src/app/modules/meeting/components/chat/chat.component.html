@@ -1,0 +1,29 @@
+<div class="chat-box">
+
+  <div class="chat-messages" #chatMessagesContainer>
+    <div
+      *ngFor="let msg of messages"
+      class="chat-message"
+      [ngClass]="{ 'own-message': msg.sender === username }"
+    >
+      <div class="message-meta">
+        <span>{{ msg.sender }}</span>&nbsp;
+        <span class="timestamp">{{ msg.timestamp | date: 'shortTime' }}</span>
+      </div>
+      <div class="message-text">{{ msg.content }}</div>
+    </div>
+  </div>
+
+  <!-- 🟡 INPUT BAR FIXED AT BOTTOM -->
+  <div class="chat-input-wrapper">
+    <div class="chat-input">
+      <input
+        type="text"
+        [(ngModel)]="newMessage"
+        placeholder="Type a message..."
+        (keyup.enter)="sendMessage()"
+      />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>

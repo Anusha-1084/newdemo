@@ -1,0 +1,48 @@
+<div class="meet-sidebar">
+  <!-- Header -->
+  <div class="header">
+    <h3>People</h3>
+    <button class="close-btn" (click)="close()">✕</button>
+  </div>
+
+  <!-- Add People button -->
+  <div class="add-people">
+    <button>
+      <mat-icon>person_add</mat-icon>
+      Add people
+    </button>
+  </div>
+
+  <!-- Search box -->
+  <div class="search-box">
+    <input type="text" placeholder="Search for people" />
+  </div>
+
+  <!-- Section title -->
+  <div class="section-title">In the meeting</div>
+
+  <!-- Participants list -->
+  <div class="participants-list">
+    <div class="participant-card" *ngFor="let participant of participants">
+      <div class="avatar">{{ participant.username[0] | uppercase }}</div>
+
+      <div class="info">
+        <div class="name">{{ participant.username }}</div>
+        <div class="role" *ngIf="participant.role">
+          {{ participant.role === 'HOST' ? 'Meeting host' : participant.role }}
+        </div>
+      </div>
+
+      <div class="actions">
+        <mat-icon *ngIf="participant.handRaised" style="color: #f4b400;">back_hand</mat-icon>
+        <mat-icon *ngIf="participant.audioMuted">mic_off</mat-icon>
+        <mat-icon>more_vert</mat-icon>
+      </div>
+    </div>
+
+    <div *ngIf="participants.length === 0" class="no-participants">
+      <mat-icon>groups</mat-icon>
+      <p>No participants yet</p>
+    </div>
+  </div>
+</div>

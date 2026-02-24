@@ -1,0 +1,99 @@
+<div class="form-container">
+  <mat-card class="reminder-card">
+    <h2 class="form-title">{{ isEdit ? "Update Reminder" : "Create Reminder" }}</h2>
+
+    <form (ngSubmit)="save()" #reminderForm="ngForm" class="reminder-form">
+
+      <!-- Title -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="reminder.title" name="title" required />
+      </mat-form-field>
+
+      <!-- Row: Due Date + Time -->
+      <div class="row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Due Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="dueDate"
+            name="dueDate"
+            required
+            [min]="minDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Due Time</mat-label>
+          <input
+            matInput
+            type="time"
+            [(ngModel)]="dueTime"
+            name="dueTime"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <!-- Row: Notify Before + Repeat -->
+      <div class="row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Notify Before</mat-label>
+          <mat-select [(ngModel)]="reminder.notifyBeforeMinutes" name="notifyBeforeMinutes" required>
+            <mat-option [value]="5">5 minutes</mat-option>
+            <mat-option [value]="10">10 minutes</mat-option>
+            <mat-option [value]="30">30 minutes</mat-option>
+            <mat-option [value]="60">60 minutes</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Repeat</mat-label>
+          <mat-select [(ngModel)]="reminder.recurringType" name="recurringType">
+            <mat-option [value]="null">None</mat-option>
+            <mat-option value="DAILY">Daily</mat-option>
+            <mat-option value="WEEKLY">Weekly</mat-option>
+            <mat-option value="MONTHLY">Monthly</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Attachment -->
+      <div class="attachment">
+        <label>Attachment</label>
+        <label for="fileInput" class="upload-btn">Upload File</label>
+        <input
+             id="fileInput"
+             type="file"
+             (change)="onFileSelected($event)"
+             accept=".pdf,.png,.jpg,.jpeg,.docx"
+        />
+
+        <div *ngIf="selectedFileName">{{ selectedFileName }}</div>
+        <button
+          *ngIf="reminder.attachmentPath"
+          mat-button
+          color="warn"
+          (click)="removeAttachment()"
+        >
+          Remove File
+        </button>
+      </div>
+
+      <!-- Submit -->
+      <button
+        mat-raised-button
+        color="primary"
+        class="submit-btn"
+        type="submit"
+        [disabled]="reminderForm.invalid"
+      >
+        {{ isEdit ? "Update Reminder" : "Create Reminder" }}
+      </button>
+    </form>
+  </mat-card>
+</div>
+

@@ -1,0 +1,156 @@
+/* 🌤 Background Container */
+.apply-leave-container {
+   background: #f4f6fa;
+  min-height: 90vh;
+  font-family: "Segoe UI", sans-serif;
+  padding: 30px 50px;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+   display: flex; /* 👈 Use flexbox for centering */
+  justify-content: center; /* Horizontal center */
+  align-items: center;
+}
+
+/* 🧾 Centered Form Card */
+.leave-form-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  padding: 2.5rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.leave-form-container:hover {
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* 🏷️ Title */
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* 📄 Form Labels */
+label {
+  display: block;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* ✏️ Input Fields */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* 📅 Date Group */
+.date-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.date-container div {
+  flex: 1;
+}
+
+/* 📎 File Upload */
+input[type="file"] {
+  padding: 6px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* 🔘 Buttons */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+/* 💙 Submit */
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  &:disabled {
+    background-color: #a3c8f1;
+    cursor: not-allowed;
+  }
+}
+
+/* ⚫ Cancel */
+.cancel-btn {
+  background-color: #6c757d;
+  color: #fff;
+
+  &:hover {
+    background-color: #545b62;
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .apply-leave-container {
+    padding: 20px;
+  }
+
+  .leave-form-container {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .date-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}

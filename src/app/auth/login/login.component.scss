@@ -1,0 +1,165 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.auth-form-container {
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 380px;
+  margin: auto;
+  text-align: center;
+
+  .form-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.2rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1.2rem;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    .full-width-field {
+      width: 100%;
+
+      ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: 0.5em;
+      }
+
+      ::ng-deep .mat-form-field-outline {
+        border-color: #ccc;
+      }
+
+      ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        color: #007bff;
+      }
+
+      ::ng-deep .mat-form-field-label,
+      ::ng-deep .mat-icon {
+        color: #888;
+      }
+
+      ::ng-deep .mat-input-element {
+        color: #222;
+      }
+
+      mat-error {
+        font-size: 0.75rem;
+        color: #e53935;
+        text-align: left;
+        margin-top: 2px;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: -6px;
+
+      .forgot-password-link {
+        font-size: 0.85rem;
+        color: #007bff;
+        cursor: pointer;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #0056b3;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .submit-btn {
+      padding: 10px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 6px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+    }
+
+    .social-login-divider {
+      display: flex;
+      align-items: center;
+      color: #aaa;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+
+      &::before,
+      &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ddd;
+      }
+
+      &::before {
+        margin-right: 0.5em;
+      }
+
+      &::after {
+        margin-left: 0.5em;
+      }
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      .social-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+
+      &.google-btn {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        color: #333;
+
+        &:hover {
+          background: #f0f0f0;
+        }
+      }
+
+      &.github-btn {
+        background: #24292e;
+        color: #fff;
+        border: 1px solid #1f2327;
+
+        &:hover {
+          background: #1f2327;
+        }
+      }
+    }
+  }
+}

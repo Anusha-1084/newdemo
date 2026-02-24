@@ -1,0 +1,20 @@
+*{margin-left: 0px;
+    margin-top: 0px;
+}
+
+.welcome-heading {
+  animation: slideFade 1s ease-out forwards;
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.weekend-btn {
+  font-family: 'Arial', sans-serif; /* Replace with your desired font */
+}
+/* Keyframe Animation */
+@keyframes slideFade {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

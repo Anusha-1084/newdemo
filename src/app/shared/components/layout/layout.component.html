@@ -1,0 +1,18 @@
+<mat-sidenav-container class="layout-container">
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <!-- Navbar -->
+    <app-navbar (profileClicked)="toggleSidebar()"></app-navbar> 
+
+    <div class="app-sidebar">
+      <app-sidebar-component [isSidebarOpen]="isSidebarOpen"></app-sidebar-component>
+    </div>
+    <!-- Content Area -->
+    <div class="content-area">
+      <router-outlet/>
+    </div>
+    
+    <!-- Footer -->
+    <app-footer-section></app-footer-section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

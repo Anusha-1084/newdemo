@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.messages-container {
+  width: 80%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: left;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header p {
+  color: gray;
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.sidebar {
+  width: 30%;
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.compose-btn {
+  background-color: #6c40ff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.filter-dropdown {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-box {
+  display: flex;
+  margin-top: 10px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-btn {
+  background-color: #6c40ff;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.messages-list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.messages-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.messages-list li.unread {
+  font-weight: bold;
+}
+
+.message-content {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

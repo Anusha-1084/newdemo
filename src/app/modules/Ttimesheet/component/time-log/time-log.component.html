@@ -1,0 +1,75 @@
+<div class="time-log-container">
+  <div class="time-log-box">
+    <h2>Time Log</h2>
+
+    <div class="dropdown-row">
+
+      <div class="dropdown-group">
+        <label for="project">Project</label>
+        <select id="project" [(ngModel)]="selectedProject">
+          <option value="">Select Project</option>
+          <option *ngFor="let project of projects">{{ project }}</option>
+        </select>
+      </div>
+      <div class="dropdown-group">
+        <label for="job">Job</label>
+        <select id="job" [(ngModel)]="selectedJob">
+          <option value="">Select Job</option>
+          <option *ngFor="let job of jobs">{{ job }}</option>
+        </select>
+      </div>
+      <div class="dropdown-group">
+        <label for="workItem">Work Item</label>
+        <select id="workItem" [(ngModel)]="selectedWorkItem">
+          <option value="">Select Work Item</option>
+          <option *ngFor="let item of workItems">{{ item }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="view-toggle">
+      <button class="toggle-btn" [class.active]="view === 'weekly'" (click)="setView('weekly')">Weekly</button>
+      <button class="toggle-btn" [class.active]="view === 'monthly'" (click)="setView('monthly')">Monthly</button>
+    </div>
+
+    <div class="date-navigation">
+      <button (click)="changeOffset(-1)">← Prev</button>
+      <span>{{ getCurrentRange() }}</span>
+      <button (click)="changeOffset(1)">Next →</button>
+    </div>
+
+    <!-- Weekly View -->
+    <div class="week-grid" *ngIf="view === 'weekly'">
+      <div class="day" *ngFor="let day of weekDays">
+        <label>
+          {{ day.name }}<br />
+          <small>{{ day.date | date: 'MMM d' }}</small>
+        </label>
+        <input type="number" min="0" max="24" [(ngModel)]="day.hours" [disabled]="!day.editable"/>
+        <div *ngIf="!day.editable" class="locked-indicator"></div>
+      </div>
+    </div>
+
+    <!-- Monthly View -->
+    <div class="month-grid" *ngIf="view === 'monthly'">
+      <div class="day" *ngFor="let day of monthDays">
+        <label>
+          {{ day.date | date: 'EEE' }}<br />
+          <small>{{ day.date | date: 'MMM d' }}</small>
+        </label>
+        <input type="number" min="0" max="24" [(ngModel)]="day.hours" [disabled]="!day.editable"/>
+        <div *ngIf="!day.editable" class="locked-indicator"></div>
+      </div>
+    </div>
+
+    <div class="bottom-actions">
+      <div class="total-hours">
+        Total Hours: <strong>{{ getTotalHours() }} hours</strong>
+      </div>
+      <div class="buttons">
+        <button class="btn draft" (click)="saveDraft()">Save Draft</button>
+        <button class="btn submit" (click)="submit()">Submit for Approval</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="ticket-container">
+  <h2>My Tickets</h2>
+
+  <!-- Search Input -->
+  <div style="margin-bottom: 20px;">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (input)="onSearchInputChange()"
+      placeholder="🔍 Search tickets..."
+      class="form-control"
+      style="width: 300px; padding: 8px; font-size: 14px; border-radius: 6px;"
+    />
+  </div>
+
+  <!-- Loading Message -->
+  <p *ngIf="tickets === undefined">Loading tickets...</p>
+
+  <!-- Ticket Table -->
+  <table *ngIf="tickets && tickets.length > 0; else noTickets">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Created Date</th>
+        <th>Assigned User</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket?.id }}</td>
+        <td>{{ ticket?.title }}</td>
+        <td>{{ ticket?.description }}</td>
+        <td>{{ ticket?.status }}</td>
+        <td>{{ ticket?.priority }}</td>
+        <td>{{ ticket?.createdTimestamp }}</td>
+        <td>{{ ticket?.assignedUserId }}</td>
+        <td>
+          <button (click)="updateTicket(ticket)">Update</button>
+          <button (click)="deleteTicket(ticket.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- No Tickets Found Message -->
+  <ng-template #noTickets>
+    <p>No tickets found.</p>
+  </ng-template>
+
+  <!-- Pagination Controls -->
+  <div *ngIf="totalPages > 1" class="pagination-controls">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">Next</button>
+  </div>
+</div>
+
+
+
+

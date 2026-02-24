@@ -1,0 +1,107 @@
+<!-- <div class="dashboard">
+    <!-- Add your dashboard content here -->
+    <!-- <p>hi this dashboard</p>
+</div> --> 
+
+
+
+
+<!-- <div class="dashboard-container">
+  <h2>Welcome to Your CRM Dashboard, {{ username }}!</h2>
+  <p>Here you can manage your leads, tasks, and customer interactions.</p>
+
+  <div class="dashboard-widgets">
+    <div class="widget">
+      <h3>Total Leads</h3>
+      <p>500</p>
+    </div>
+    <div class="widget">
+      <h3>Upcoming Tasks</h3>
+      <p>12</p>
+    </div>
+    </div>
+
+  </div> -->
+
+
+
+
+<!-- src/app/layout/dashboard/dashboard.component.html -->
+<div class="dashboard-container container-fluid py-5">
+  <div class="dashboard-header mb-5 animated-fade-in-down">
+    <h1 class="dashboard-title">Welcome, <span class="text-gradient fw-bold">{{ username }}</span>!</h1>
+    <p class="dashboard-subtitle">Your central hub for all organizational solutions.</p>
+  </div>
+
+  <div class="row g-4 dashboard-main-grid">
+
+    <div class="col-12 col-lg-4 order-lg-1 animated-panel-fade-in" style="--animation-delay: 0.2s;">
+      <div class="dashboard-panel panel-stats h-100">
+        <h2 class="panel-title">Overview</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">500</span>
+            <span class="stat-label">Total Leads</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Upcoming Tasks</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">85%</span>
+            <span class="stat-label">Project Completion</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">$15K</span>
+            <span class="stat-label">Revenue This Month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8 order-lg-2 animated-panel-fade-in" style="--animation-delay: 0.4s;">
+      <div class="dashboard-panel panel-features h-100">
+        <h2 class="panel-title">Your Tools & Features</h2>
+        <div class="features-list">
+          <a [routerLink]="feature.routerLink" class="feature-item-link"
+             *ngFor="let feature of features; let i = index">
+            <div class="feature-item" [ngClass]="{'feature-item-media': feature.isMediaRelated}">
+              <div class="item-icon-wrapper">
+                <img [src]="feature.icon" alt="{{ feature.title }} Icon" class="item-icon">
+              </div>
+              <div class="item-details">
+                <span class="item-title fw-bold">{{ feature.title }}</span>
+                <span class="item-description">{{ feature.description }}</span>
+              </div>
+              <i class="fas fa-chevron-right item-arrow"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8 order-lg-3 animated-panel-fade-in" style="--animation-delay: 0.6s;">
+      <div class="dashboard-panel panel-activity h-100">
+        <h2 class="panel-title">Recent Activity</h2>
+        <ul class="activity-list">
+          <li><strong>John Doe</strong> updated 'CRM Integration' task. <span class="text-muted">2 hours ago</span></li>
+          <li><strong>Jane Smith</strong> commented on 'Marketing Campaign'. <span class="text-muted">yesterday</span></li>
+          <li>New lead assigned to <strong>You</strong>: 'Acme Corp'. <span class="text-muted">3 days ago</span></li>
+          <li>Task 'Review Q2 Reports' is overdue. <span class="text-danger">overdue</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4 order-lg-4 animated-panel-fade-in" style="--animation-delay: 0.8s;">
+      <div class="dashboard-panel panel-events h-100">
+        <h2 class="panel-title">Upcoming</h2>
+        <ul class="event-list">
+          <li>Meeting with <strong>Team Alpha</strong> <span class="text-info">Today, 2:00 PM</span></li>
+          <li>Call with <strong>Client X</strong> <span class="text-info">Tomorrow, 10:30 AM</span></li>
+          <li>Project Deadline: <strong>Website Redesign</strong> <span class="text-warning">Aug 15</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

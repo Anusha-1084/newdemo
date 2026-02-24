@@ -1,0 +1,91 @@
+
+<div class="container mt-5">
+
+  <h1 class="text-center mb-4">Edit Your Profile</h1>
+
+  <!-- Notifications -->
+  <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055">
+    <div *ngIf="showSuccessToast" class="toast align-items-center text-white bg-success border-0 show" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">{{ successMessage }}</div>
+      </div>
+    </div>
+
+    <div *ngIf="showErrorToast" class="toast align-items-center text-white bg-danger border-0 show" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">{{ errorMessage }}</div>
+      </div>
+    </div>
+  </div>
+
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <div class="container text-center">
+      <div class="mb-4 text-center position-relative d-inline-block">
+        <img *ngIf="previewUrl" [src]="previewUrl" alt="Profile Image" class="rounded-circle" width="150" height="150"
+          style="object-fit: cover;" />
+        <label for="pic" class="position-absolute bottom-0 end-0 bg-white rounded-circle p-2" style="cursor: pointer;">
+          <i class="material-icons fs-5">photo_camera</i>
+        </label>
+        <input type="file" id="pic" (change)="onFileChange($event)" class="d-none" />
+      </div>
+    </div>
+
+    <div class="d-flex gap-5">
+      <div class="mb-3 flex-grow-1">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control"
+          placeholder="Enter First Name" />
+      </div>
+
+      <div class="mb-3 flex-grow-1">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control"
+          placeholder="Enter Last Name" />
+      </div>
+    </div>
+
+    <div class="d-flex gap-5">
+      <div class="mb-3 flex-grow-1">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter Email" />
+      </div>
+
+      <div class="mb-3 flex-grow-1">
+        <label for="mobileNo" class="form-label">Mobile Number</label>
+        <input type="text" id="mobileNo" formControlName="mobileNo" class="form-control"
+          placeholder="Enter Mobile Number" />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="bio" class="form-label">Bio</label>
+      <input type="text" id="bio" formControlName="bio" class="form-control" placeholder="Enter Bio" />
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" id="location" formControlName="location" class="form-control" placeholder="Enter Location" />
+    </div>
+
+    <p class="text-secondary">Profile created at: {{ profileForm.get('createdAt')?.value | date:'medium' }} </p>
+
+    <!-- submit button -->
+  <button
+  type="submit"
+  class="btn"
+  [ngClass]="{
+    'btn-primary': (profileForm.dirty || imageChanged) && !profileForm.invalid,
+    'btn-secondary': !(profileForm.dirty || imageChanged) || profileForm.invalid
+  }"
+  [disabled]="!(profileForm.dirty || imageChanged) || profileForm.invalid"
+>
+  Save
+</button>
+
+
+  </form>
+</div>

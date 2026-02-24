@@ -1,0 +1,28 @@
+<div class="upload-card">
+  <h2>File Upload</h2>
+
+  <div class="dropzone">
+    <p>Drag and drop files here, or</p>
+    <button (click)="triggerFileInput()">Browse</button>
+    <input type="file" id="fileInput" (change)="onFileChange($event)" hidden />
+  </div>
+
+  <label>Name</label>
+  <input type="text" [(ngModel)]="name" placeholder="File name" />
+
+  <div style="display: flex; gap: 10px;">
+    <div style="flex: 1;">
+      <label>Type</label>
+      <input type="text" [(ngModel)]="type" placeholder="e.g., image/png" />
+    </div>
+    <div style="flex: 1;">
+      <label>Size (KB)</label>
+      <input type="text" [value]="size" readonly />
+    </div>
+  </div>
+
+  <label>Receiver Username</label>
+  <input type="text" [(ngModel)]="receiverUsername" placeholder="Enter receiver's username" />
+
+  <button class="upload-btn" (click)="uploadFile()">UPLOAD</button>
+</div>

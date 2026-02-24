@@ -1,0 +1,17 @@
+.container{
+    box-shadow: 0 2px 4px rgba(6, 17, 118, 0.08), 0 4px 12px rgba(6, 17, 118, 0.08);
+
+    .card-containt app-cards:nth-child(2) {
+        display: flex;
+        background-color: black;
+        flex-direction: row-reverse;       
+    }
+
+    .reverse{
+        flex-direction: row-reverse;
+    }
+}
+img{
+    width: 340px;
+    height: 200px;
+}

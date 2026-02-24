@@ -1,0 +1,26 @@
+<div class="photo-container">
+  <h2>Photo</h2>
+  <p>Add a nice photo of yourself for your profile.</p>
+
+  <div class="image-preview">
+    <img src="https://img-c.udemycdn.com/user/200_H/anonymous_3.png" alt="" height="200" width="200" class="" loading="lazy" style="max-height: 20rem;" />
+  </div>
+   
+  <p><label for="fileInput" class="form-label">Add / Change Image</label></p>
+
+  <div class="form-group">
+    <input
+      type="file"
+      id="fileInput"
+      (change)="onFileSelected($event)"
+      class="form-control"
+      accept="image/*"
+    />
+    <button class="btn btn-outline-primary" (click)="uploadImage()">Upload image</button>
+  </div>
+
+  <div>
+    <button class="btn btn-save" (click)="saveChanges()">Save</button>
+  </div>
+  
+</div>

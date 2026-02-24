@@ -1,0 +1,18 @@
+<div *ngIf="visible" class="user-list" #scrollContainer>
+  <div *ngIf="isLoading">Loading...</div>
+
+  <div
+    *ngFor="let user of users"
+    class="user-item"
+    [class.selected]="user === selectedUser"
+    (click)="selectUser(user)"
+  >
+    <div
+      class="avatar"
+      [ngStyle]="{ 'background-color': getAvatarColor(user) }"
+    >
+      {{ getInitials(user) }}
+    </div>
+    <div class="name">{{ user.firstName }} {{ user.lastName }}</div>
+  </div>
+</div>

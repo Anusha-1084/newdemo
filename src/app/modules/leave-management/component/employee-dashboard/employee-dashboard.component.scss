@@ -1,0 +1,131 @@
+/* 🌐 Dashboard Container */
+.dashboard-container {
+  background: #f4f6fa;
+  min-height: 90vh;
+  font-family: "Segoe UI", sans-serif;
+  padding: 30px 50px;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   📊 SUMMARY + LEAVE BALANCE GRID
+===================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 35px;
+}
+
+/* 🧱 Generic Card */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+}
+
+.card .icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+  color: #1a73e8;
+}
+
+.card h3 {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.card .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* =====================================================
+   🎨 STATUS COLORS
+===================================================== */
+.success { border-top: 4px solid #43a047; }
+.warning { border-top: 4px solid #f9a825; }
+.danger  { border-top: 4px solid #e53935; }
+
+/* =====================================================
+   🧮 LEAVE BALANCE CARD
+===================================================== */
+.leave-balance-card {
+  position: relative;
+}
+
+.leave-balance-card .sub-text {
+  font-size: 12px;
+  color: #777;
+  margin-top: -4px;
+}
+
+/* =====================================================
+   🔄 LEAVE BALANCE PROGRESS
+===================================================== */
+.progress {
+  margin-top: 10px;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #1a73e8;
+  transition: width 0.4s ease;
+}
+
+/* =====================================================
+   🪟 MODAL
+===================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 14px;
+  padding: 22px;
+  animation: fadeInScale 0.25s ease;
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* =====================================================
+   📱 RESPONSIVE
+===================================================== */
+@media (max-width: 992px) {
+  .activity-section {
+    grid-template-columns: 1fr;
+  }
+}
